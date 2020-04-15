@@ -1,0 +1,119 @@
+body{
+	margin:0;
+	padding:0;
+	background:gold; 
+}
+
+#navegacion{
+	width:100%;
+	height:70px;  
+	background:black; 
+	font-family:Arial; 
+	display:grid;
+	grid-template-columns:repeat(3,150px);
+	grid-template-rows:70px;
+	align-items:center;
+	    
+}
+
+#navegacion *{
+	text-align:center; 
+} 
+
+#navegacion a{
+	text-decoration:none;
+	color:white;  
+}
+
+#fecha{
+	font-family:Arial;
+	font-size:40px;
+	color:white;
+	margin-left:80px;
+	text-shadow:2px 2px 2px black;   
+}
+
+/*Código para el diseño de las peliculas de cliente*/
+
+.contenedor{
+	width:95%;
+	margin:50px auto;
+	border:2px solid black; 
+	padding:20px; 
+	box-sizing:border-box; 
+	display:grid;
+	grid-template-columns:repeat(3,1fr);
+	grid-column-gap:12px; 
+	grid-row-gap:12px; 
+}
+
+.pelicula{
+    height:400px; 
+    background: black;
+    border-radius:3%; 
+    display:grid;
+    grid-column-gap:5px;
+    grid-template-columns:50% 50%;
+    grid-template-rows:300px 50px;   
+    grid-template-areas:"imagen imagen"
+                         "agregar eliminar"; 
+    justify-content:center;
+    align-items:center;                        
+}
+
+#portada{
+	grid-area:imagen;
+	width:360px;
+	margin:0 auto;  
+}
+
+#btn-agregar{
+	grid-area:agregar;
+}
+
+#btn-eliminar{
+	grid-area:eliminar; 
+}
+
+.boton{
+	display:inline-block;
+	width:180px;  
+	padding:8px;
+	background:black;
+	color:white;
+	font-weight:bold;
+	border:2px solid gold; 
+	border-radius:5px;   
+	margin:20px auto; 
+}
+
+.boton:hover{
+	color:black;
+	background:white;
+	transform:scale(1.1); 
+	cursor:pointer;  
+}
+
+/*Partes exclusivas de la cartelera de administrador*/
+.agregar{
+	height:400px; 
+    background:rgba(120,120,120,0.8);
+    border-radius:3%;
+    display:grid;
+    align-items:center;
+    justify-content:center;   
+}
+
+.icon-plus{
+	font-size:150px; 
+}
+
+.icon-plus:hover{
+	cursor:pointer; 
+}
+
+.agregar:hover{
+	background:rgba(120,120,120,1);
+}
+
+/*Partes exclusivas de la cartelera cliente*/
