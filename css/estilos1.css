@@ -39,10 +39,9 @@ header{
 	margin:0px auto;
    /* background-color: rgba(255, 183, 71, 0.5);*/
    	background-color: #fff;
-    padding:3% 2% 2% 2%; 
+    padding:2% 2% 2% 2%; 
 	border-bottom-left-radius:10px; 
 	border-bottom-right-radius:10px; 
-
 	text-align: center;
 	box-shadow: -4px -3px 21px 8px rgba(0,0,0,0.09);}
 
@@ -53,14 +52,16 @@ header{
 .item{
 	width:90%;
 	font-size:20px; 
-	padding:4px;
-	margin:12px auto; 
+	padding:6px;
+	padding-left: 10px;
+	margin:4px auto; 
 	/*background-color: rgba(5,5,60,1); */
 	background-color:#ededed;  
 	color:black;
 	box-sizing:border-box; 
 	/*border:1px solid gold;*/
 	border-radius:5px;
+
 }
 .item:focus{
 	outline:0px;
@@ -82,9 +83,7 @@ header{
 	font-size: 1rem;
 }
 .boton:hover{
-	color:black;
-	background:white;
-	transform:scale(1.05); 
+	transform:scale(1.03); 
 	cursor:pointer;  
 }
 
@@ -117,9 +116,21 @@ p a{
 	font-weight: 900;
 	font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.nav-item > a{
+	color:#000;
+
+}
+
+.nav-item:hover{
+	background-color: #ededed;
+}
+
 .texto{
 	color:black;
-	font-size: small;
+	font-size: 1.2rem;
 	font-family: 'Poppins', 'Lucida Sans';
 	text-align: left;
+	margin-left: 20px;
+	margin-bottom: 0px;
+	margin-top: 8px;
 }
