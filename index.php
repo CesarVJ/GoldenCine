@@ -28,21 +28,29 @@
 <div class="tab-pane fade" id="registrarse" role="tabpanel" aria-labelledby="registro-tab">
 		<form action="post" class="formulario">
 			<input type="text" name="nombre" class="item" placeholder="Ingrese su nombre">
-			<input type="date" name="nacimiento" class="item">
-			<input type="text" name="correo" class="item" placeholder="Correo">
+			<div id="cont-calendario">
+				<img class="icono" id="calendario" src="img/calendario.svg" alt="calendario">
+				<input type="date" name="nacimiento" class="item">
+				<input type="email" id="correo" name="correo" class="item" placeholder="Correo">
+			</div>			
 			<input type="tel" name="telefono" class="item" placeholder="271-000-00-00">
 			<input type="password" name="password" class="item" placeholder="Contraseña">
 			<input type="password" name="confirmar-password" class="item" placeholder="Confirmar contraseña">
 			<input type="submit" name="registrarse" value="Registrarse" class="boton">
         </form>
 	</div>
-		<form action="post" class="formulario tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
+	<d class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
+	<form action="post" class="formulario " >
 			<p class="texto">Correo</p>
-			<input type="text" name="correo" class="item" placeholder="example@gmail.com">
+			<img class="icono" src="img/usuario.svg" alt="usuario">
+			<input type="email" name="correo" class="item-inicio" placeholder="example@gmail.com">
 			<p class="texto">Contraseña</p>
-			<input type="password" name="password" class="item" placeholder="contraseña">
+			<img class="icono" src="img/contraseña.svg" alt="contraseña">
+			<input type="password" name="password" class="item-inicio" placeholder="Contraseña">
 			<input type="submit" name="entrar" value="Iniciar sesión" class="boton">
         </form>
+	</div>
+
 </div>
 
 	</div>

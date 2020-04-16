@@ -49,11 +49,11 @@ header{
 	width:100%; 
 }
 
-.item{
+.item-inicio{
 	width:90%;
 	font-size:20px; 
 	padding:6px;
-	padding-left: 10px;
+	padding-left: 52px;
 	margin:4px auto; 
 	/*background-color: rgba(5,5,60,1); */
 	background-color:#ededed;  
@@ -61,9 +61,14 @@ header{
 	box-sizing:border-box; 
 	/*border:1px solid gold;*/
 	border-radius:5px;
-
 }
-.item:focus{
+.icono{
+	width: 42px;
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.item-inicio:focus, .item:focus{
 	outline:0px;
 }
 
@@ -133,4 +138,42 @@ p a{
 	margin-left: 20px;
 	margin-bottom: 0px;
 	margin-top: 8px;
+}
+
+/*Formulario de registro*/
+input[type=date]{
+	width: 35%;
+	font-size: 1rem;
+	padding-left:5px;
+	padding: 5px;
+	display:inline-block;
+	margin-right: 45px;
+}
+#correo{
+	width: 45%;
+	display:inline-block;
+}
+
+.item{
+	width:90%;
+	font-size:17px; 
+	padding:5px;
+	padding-left: 15px;
+	margin:10px auto; 
+	background-color:#ededed;  
+	color:black;
+	box-sizing:border-box; 
+	border-radius:5px;
+	z-index: 100;
+}
+#cont-calendario{
+	position: relative;
+}
+#calendario{
+	position: absolute;
+	left: 38%;
+	margin-top: 8px;
+	width: 43px;
+	z-index: 1;
+
 }
