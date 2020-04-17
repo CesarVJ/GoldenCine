@@ -1,3 +1,76 @@
+<?php
+
+		session_start();
+		if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+			header("location: paginas/carteleraAdmin.php");
+			exit;
+		}
+		include 'conexion.php';
+		$conexion = abrirConexion();
+		$correo = $cotraseña = "";
+
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(empty(trim($_POST["correo"]))){
+				$error_correo = "Ingrese un correo";
+			}else{
+				$correo = trim($_POST["correo"]);
+			}
+			if(empty(trim($_POST["contraseña"]))){
+				$error_contraseña = "Ingrese una contraseña";
+			}else{
+				$contraseña = trim($_POST["contraseña"]);
+			}
+			if(empty($error_correo) && empty($error_contraseña)){
+				$consulta = "select id_administrador, correo, contraseña from administrador where correo = ?";
+
+				if($statement = mysqli_prepare($conexion, $consulta)){
+					mysqli_stmt_bind_param($statement, "s", $param_correo);
+					$param_correo = $correo;
+
+					if(mysqli_stmt_execute($statement)){
+						mysqli_stmt_store_result($statement);
+						if(mysqli_stmt_num_rows($statement) == 1){
+							mysqli_stmt_bind_result($statement, $id_administrador, $correo, $contraseña_md5);
+							if(mysqli_stmt_fetch($statement)){
+								if(md5($contraseña) == $contraseña_md5){
+									session_start();
+									$_SESSION["loggedin"] = true;
+									$_SESSION["id"] = $id_administrador;
+									$_SESSION["correo"] = $correo;
+									header("location: paginas/carteleraAdmin.php");
+								}else{
+									$error_contraseña = "Contraseña incorrecta";
+									//header("location: paginas/carteleraAdmin.php");
+									echo  $error_contraseña;
+								}
+							}
+						}else{
+							$error_correo = "Correo incorrecto";
+							echo  $error_correo;
+						}
+					}else{
+						echo "Algo a salido mal! :c";
+					}
+					mysqli_stmt_close($statement);
+				}
+			}
+			mysqli_close($conexion);
+		}
+		/*
+		echo "Se ha realizado la conexión con exito!";
+		$admin = "select * from administrador";
+		$resultado = $conexion -> query($admin);
+		if($resultado->num_rows > 0){
+			while($row = $resultado->fetch_assoc()){
+				echo "id: " . $row["id_administrador"]. "Nombre: " . $row["nombre"]. "Correo: ". $row["correo"]."<br>";
+			}
+		}else{
+			echo "0 results";
+		}
+		cerrarConexion($conexion);
+		*/
+		
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,15 +115,19 @@
         </form>
 	</div>
 	<d class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
-	<form action="post" class="formulario " >
-			<p class="texto">Correo</p>
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="formulario " >
+	<div class="grupo <?php echo (!empty($error_correo)) ? 'has-error' : ''; ?>">
+	<p class="texto">Correo</p>
 			<img class="icono" src="img/usuario.svg" alt="usuario">
-			<input type="email" name="correo" class="item-inicio" placeholder="example@gmail.com">
-			<p class="texto">Contraseña</p>
+			<input type="email" name="correo" class="item-inicio" placeholder="example@gmail.com" value="<?php echo $correo; ?>">
+	</div>
+	<div class="grupo <?php echo (!empty($error_contraseña)) ? 'Error' : 'Bienvenido'; ?>">
+	<p class="texto">Contraseña</p>
 			<img class="icono" src="img/contraseña.svg" alt="contraseña">
-			<input type="password" name="password" class="item-inicio" placeholder="Contraseña">
+			<input type="password" name="contraseña" class="item-inicio" placeholder="Contraseña">
 			<input type="submit" name="entrar" value="Iniciar sesión" class="boton">
-        </form>
+	</div>
+    </form>
 	</div>
 
 </div>

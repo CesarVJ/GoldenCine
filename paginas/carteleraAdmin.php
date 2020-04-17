@@ -15,7 +15,7 @@
 			<option>Calificación</option>
 			<option>Nombre</option>
 		</select>
-		<a href="">Cerrar Sesión</a>
+		<a href="../cerrarSesion.php">Cerrar Sesión</a>
 	</nav>
     <h1 id="fecha">Cartelera Febrero 2020</h1>
 	<div class="contenedor">
