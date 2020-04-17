@@ -1,76 +1,3 @@
-<?php
-
-		session_start();
-		if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-			header("location: paginas/carteleraAdmin.php");
-			exit;
-		}
-		include 'conexion.php';
-		$conexion = abrirConexion();
-		$correo = $cotraseña = "";
-
-		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			if(empty(trim($_POST["correo"]))){
-				$error_correo = "Ingrese un correo";
-			}else{
-				$correo = trim($_POST["correo"]);
-			}
-			if(empty(trim($_POST["contraseña"]))){
-				$error_contraseña = "Ingrese una contraseña";
-			}else{
-				$contraseña = trim($_POST["contraseña"]);
-			}
-			if(empty($error_correo) && empty($error_contraseña)){
-				$consulta = "select id_administrador, correo, contraseña from administrador where correo = ?";
-
-				if($statement = mysqli_prepare($conexion, $consulta)){
-					mysqli_stmt_bind_param($statement, "s", $param_correo);
-					$param_correo = $correo;
-
-					if(mysqli_stmt_execute($statement)){
-						mysqli_stmt_store_result($statement);
-						if(mysqli_stmt_num_rows($statement) == 1){
-							mysqli_stmt_bind_result($statement, $id_administrador, $correo, $contraseña_md5);
-							if(mysqli_stmt_fetch($statement)){
-								if(md5($contraseña) == $contraseña_md5){
-									session_start();
-									$_SESSION["loggedin"] = true;
-									$_SESSION["id"] = $id_administrador;
-									$_SESSION["correo"] = $correo;
-									header("location: paginas/carteleraAdmin.php");
-								}else{
-									$error_contraseña = "Contraseña incorrecta";
-									//header("location: paginas/carteleraAdmin.php");
-									echo  $error_contraseña;
-								}
-							}
-						}else{
-							$error_correo = "Correo incorrecto";
-							echo  $error_correo;
-						}
-					}else{
-						echo "Algo a salido mal! :c";
-					}
-					mysqli_stmt_close($statement);
-				}
-			}
-			mysqli_close($conexion);
-		}
-		/*
-		echo "Se ha realizado la conexión con exito!";
-		$admin = "select * from administrador";
-		$resultado = $conexion -> query($admin);
-		if($resultado->num_rows > 0){
-			while($row = $resultado->fetch_assoc()){
-				echo "id: " . $row["id_administrador"]. "Nombre: " . $row["nombre"]. "Correo: ". $row["correo"]."<br>";
-			}
-		}else{
-			echo "0 results";
-		}
-		cerrarConexion($conexion);
-		*/
-		
-	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="bootstrap\css\bootstrap.min.css" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/estilos1.css">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script src="js/validaciones.js"></script>
 </head>
 <body>
 <div class="fondo"></div>
@@ -115,27 +43,104 @@
         </form>
 	</div>
 	<d class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="formulario " >
-	<div class="grupo <?php echo (!empty($error_correo)) ? 'has-error' : ''; ?>">
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="formulario" >
+	<div class="grupo-correo">
 	<p class="texto">Correo</p>
 			<img class="icono" src="img/usuario.svg" alt="usuario">
-			<input type="email" name="correo" class="item-inicio" placeholder="example@gmail.com" value="<?php echo $correo; ?>">
+			<input type="email" name="correo" class="item-inicio" placeholder="example@gmail.com" value="">
+			<div class="grupo-error" id="error-correo">
+				<img class="icono-error" src="img/error.svg" alt="error">
+				<p class="mensaje-error">El correo ingresado no es valido</p>
+			</div>
 	</div>
-	<div class="grupo <?php echo (!empty($error_contraseña)) ? 'Error' : 'Bienvenido'; ?>">
+	<div class="grupo-contraseña">
 	<p class="texto">Contraseña</p>
 			<img class="icono" src="img/contraseña.svg" alt="contraseña">
 			<input type="password" name="contraseña" class="item-inicio" placeholder="Contraseña">
+			<div class="grupo-error" id="error-contraseña">
+				<img class="icono-error" src="img/error.svg" alt="error">
+				<p class="mensaje-error">La contraseña es incorrecta</p>
+			</div>
 			<input type="submit" name="entrar" value="Iniciar sesión" class="boton">
 	</div>
     </form>
 	</div>
-
 </div>
-
 	</div>	
 	</div>
-	
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<?php
+		session_start();
+		if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+			header("location: paginas/carteleraAdmin.php");
+			exit;
+		}
+		include 'conexion.php';
+		$conexion = abrirConexion();
+		$correo = $contraseña = "";
+
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(empty(trim($_POST["correo"]))){
+				echo "<script type='text/javascript'>correoIncorrecto();</script>";				
+			}else{
+				$correo = trim($_POST["correo"]);
+			}
+			if(empty(trim($_POST["contraseña"]))){
+				echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";				
+			}else{
+				$contraseña = trim($_POST["contraseña"]);
+			}
+			if(empty($error_correo) && empty($error_contraseña)){
+				$consulta = "select id_administrador, correo, contraseña from administrador where correo = ?";
+
+				if($statement = mysqli_prepare($conexion, $consulta)){
+					mysqli_stmt_bind_param($statement, "s", $param_correo);
+					$param_correo = $correo;
+
+					if(mysqli_stmt_execute($statement)){
+						mysqli_stmt_store_result($statement);
+						if(mysqli_stmt_num_rows($statement) == 1){
+							mysqli_stmt_bind_result($statement, $id_administrador, $correo, $contraseña_md5);
+							if(mysqli_stmt_fetch($statement)){
+								if(md5($contraseña) == $contraseña_md5){
+									session_start();
+									$_SESSION["loggedin"] = true;
+									$_SESSION["id"] = $id_administrador;
+									$_SESSION["correo"] = $correo;
+									header("location: paginas/carteleraAdmin.php");
+								}else{
+									echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";				
+									//header("location: paginas/carteleraAdmin.php");
+									echo  $error_contraseña;
+								}
+							}
+						}else{
+							echo "<script type='text/javascript'>correoIncorrecto();</script>";				
+						}
+					}else{
+						echo "Algo a salido mal! :c";
+					}
+					mysqli_stmt_close($statement);
+				}
+			}
+			mysqli_close($conexion);
+		}
+		/*
+		echo "Se ha realizado la conexión con exito!";
+		$admin = "select * from administrador";
+		$resultado = $conexion -> query($admin);
+		if($resultado->num_rows > 0){
+			while($row = $resultado->fetch_assoc()){
+				echo "id: " . $row["id_administrador"]. "Nombre: " . $row["nombre"]. "Correo: ". $row["correo"]."<br>";
+			}
+		}else{
+			echo "0 results";
+		}
+		cerrarConexion($conexion);
+		*/
+		
+	?>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
-<script src="bootstrap/js/bootstrap.min.js"></script></body>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>
