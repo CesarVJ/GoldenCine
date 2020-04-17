@@ -1,12 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body{
 	margin:0;
-	padding:0; /*
-	background-image: url("/img/fondo1.jpg");
+	padding:0; 	
+	height: 100%;
+}
+.fondo{
+	background-image: url(../img/fondo1.jpg);
 	background-repeat: no-repeat;
-	background-size:cover;*/
-	background-color:blue;
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	display: block;
+	filter: grayscale(80%);
+}
 
+.contenido{
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 99900;
 }
 
 header{
@@ -37,6 +53,7 @@ header{
 	width: 500px;
 	margin: 0px auto;
 	margin-top: 100px;
+	box-shadow: -4px -3px 21px 8px rgba(255,255,255,0.2);
 }
 .contenedor{
 	width:500px;
@@ -47,7 +64,7 @@ header{
 	border-bottom-left-radius:10px; 
 	border-bottom-right-radius:10px; 
 	text-align: center;
-	box-shadow: -4px -3px 21px 8px rgba(0,0,0,0.09);}
+	box-shadow: -4px -3px 21px 8px rgba(255,255,255,0.2);}
 
 .formulario{
 	width:100%; 
@@ -124,10 +141,11 @@ p a{
 	font-size: 1.2rem;
 	font-weight: 900;
 	font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	background-color: #ededed;
+
 }
 .nav-item > a{
 	color:#000;
-
 }
 
 .nav-item:hover{
