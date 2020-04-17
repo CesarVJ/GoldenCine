@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 body{
 	margin:0;
-	padding:0; 
-	background-color:#ffd082; 
+	padding:0; /*
+	background-image: url("/img/fondo1.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;*/
+	background-color:blue;
+
 }
 
 header{
