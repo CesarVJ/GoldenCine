@@ -29,16 +29,20 @@
 
 <div class="tab-content" id="myTabContent">
 <div class="tab-pane fade" id="registrarse" role="tabpanel" aria-labelledby="registro-tab">
-		<form action="post" class="formulario">
+		<form id="form-registro" name="form-registro" action="registro.php" onsubmit="return validarRegistro()" method="post" class="formulario" >
 			<input type="text" name="nombre" class="item" placeholder="Ingrese su nombre">
 			<div id="cont-calendario">
 				<img class="icono" id="calendario" src="img/calendario.svg" alt="calendario">
-				<input type="date" name="nacimiento" class="item">
+				<input type="date" name="fecha_nacimiento" class="item">
 				<input type="email" id="correo" name="correo" class="item" placeholder="Correo">
 			</div>			
 			<input type="tel" name="telefono" class="item" placeholder="271-000-00-00">
-			<input type="password" name="password" class="item" placeholder="Contraseña">
-			<input type="password" name="confirmar-password" class="item" placeholder="Confirmar contraseña">
+			<input type="password" name="contraseña" class="item" placeholder="Contraseña">
+			<input type="password" name="confirmar_contraseña" class="item" placeholder="Confirmar contraseña">
+			<div class="grupo-error" id="error-registro">
+				<img class="icono-error" src="img/error.svg" alt="error">
+				<p class="mensaje-error" id="mensaje-error-registro"></p>
+			</div>
 			<input type="submit" name="registrarse" value="Registrarse" class="boton">
         </form>
 	</div>
@@ -71,13 +75,18 @@
 	<?php
 		session_start();
 		if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-			header("location: paginas/carteleraAdmin.php");
+
+            if($correo == "root@gmail.com"){
+    			header("location: paginas/carteleraAdmin.php");
+            }else{
+                header("location: paginas/carteleraCliente.php");
+			}
 			exit;
 		}
 		include 'conexion.php';
 		$conexion = abrirConexion();
 		$correo = $contraseña = "";
-
+		echo md5("123456789");
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
 			if(empty(trim($_POST["correo"]))){
 				echo "<script type='text/javascript'>correoIncorrecto();</script>";				
@@ -90,27 +99,31 @@
 				$contraseña = trim($_POST["contraseña"]);
 			}
 			if(empty($error_correo) && empty($error_contraseña)){
-				$consulta = "select id_administrador, correo, contraseña from administrador where correo = ?";
-
+				if($correo == "root@gmail.com"){
+					$consulta = "select id_administrador, correo, contraseña from administrador where correo = ?";
+				}else{
+					$consulta = "select id_cliente, correo, contraseña from cliente where correo = ?";
+				}
 				if($statement = mysqli_prepare($conexion, $consulta)){
 					mysqli_stmt_bind_param($statement, "s", $param_correo);
 					$param_correo = $correo;
-
 					if(mysqli_stmt_execute($statement)){
 						mysqli_stmt_store_result($statement);
 						if(mysqli_stmt_num_rows($statement) == 1){
-							mysqli_stmt_bind_result($statement, $id_administrador, $correo, $contraseña_md5);
+							mysqli_stmt_bind_result($statement, $id, $correo, $contraseña_md5);
 							if(mysqli_stmt_fetch($statement)){
 								if(md5($contraseña) == $contraseña_md5){
 									session_start();
 									$_SESSION["loggedin"] = true;
-									$_SESSION["id"] = $id_administrador;
+									$_SESSION["id"] = $id;
 									$_SESSION["correo"] = $correo;
-									header("location: paginas/carteleraAdmin.php");
+                                    if($correo == "root@gmail.com"){
+                                        header("location: paginas/carteleraAdmin.php");
+                                    }else{
+                                        header("location: paginas/carteleraCliente.php");
+                                    }
 								}else{
 									echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";				
-									//header("location: paginas/carteleraAdmin.php");
-									echo  $error_contraseña;
 								}
 							}
 						}else{
@@ -139,6 +152,7 @@
 		*/
 		
 	?>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
