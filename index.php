@@ -46,7 +46,7 @@
 			<input type="submit" name="registrarse" value="Registrarse" class="boton">
         </form>
 	</div>
-	<d class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
+	<div class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="formulario" >
 	<div class="grupo-correo">
 	<p class="texto">Correo</p>
@@ -86,7 +86,7 @@
 		include 'conexion.php';
 		$conexion = abrirConexion();
 		$correo = $contraseña = "";
-		echo md5("123456789");
+		//echo md5("123456789");
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
 			if(empty(trim($_POST["correo"]))){
 				echo "<script type='text/javascript'>correoIncorrecto();</script>";				
