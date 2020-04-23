@@ -16,15 +16,15 @@
 
 ## Registrarse validacion 1 
 ### No debe haber campos vacios a excepción del Telefono
-![Registrarse](Capturas/Registrarse-validacion1.png)
+![Registrarse](Capturas/Registrarse-validacion_1.png)
 
 ## Registrarse validacion 2
 ### La contraseña debera ser de al menos 8 caracteres
-![Registrarse](Capturas/Registrarse-validacion2.png)
+![Registrarse](Capturas/Registrarse-validacion_2.png)
 
 ## Registrarse validacion 3
 ### Las contraseñas deben coincidir
-![Registrarse](Capturas/Registrarse-validacion3.png)
+![Registrarse](Capturas/Registrarse-validacion_3.png)
 
 ## Cartelera
 ### Administrador
