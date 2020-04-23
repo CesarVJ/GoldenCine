@@ -12,7 +12,7 @@
 ![Iniciar Sesion validacion](Capturas/IniciarSesion-validacion.png)
 
 ## Registrarse 
-![Registrarse](Capturas/Registrarse.png)
+![Registrarse](Capturas/Registrarse_0.png)
 
 ## Registrarse validacion 1 
 ### No debe haber campos vacios a excepción del Telefono

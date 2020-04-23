@@ -14,7 +14,7 @@
 	<header>
 		<nav class="menu">
 			<p class="logo grid-element"><span class="span">GC</span><br> <strong>Tu cine ideal</strong></p>
-			<a href="" class="grid-element" id="texto-invitado">Entrar como invitado</a>
+			<a href="paginas/carteleraInvitado.php" class="grid-element" id="texto-invitado">Entrar como invitado</a>
 	    </nav>
 	</header>
 	<ul class="nav nav-tabs" role="tablist">
