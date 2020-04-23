@@ -16,16 +16,16 @@
 
 ## Registrarse validacion 1 
 ### No debe haber campos vacios a excepción del Telefono
-![Registrarse](Capturas/Registrarse-validacion_1.png)
+![Registrarse validacion](Capturas/Registrarse-validacion_1.png)
 
 ## Registrarse validacion 2
 ### La contraseña debera ser de al menos 8 caracteres
-![Registrarse](Capturas/Registrarse-validacion_2.png)
+![Registrarse validacion2](Capturas/Registrarse-validacion_2.png)
 
 ## Registrarse validacion 3
 ### Las contraseñas deben coincidir
-![Registrarse](Capturas/Registrarse-validacion_3.png)
+![Registrarse validacion3](Capturas/Registrarse-validacion_3.png)
 
 ## Cartelera
 ### Administrador
-![Registrarse](Capturas/CarteleraAdmin.png)
+![Cartelera Admin](Capturas/CarteleraAdmin.png)
