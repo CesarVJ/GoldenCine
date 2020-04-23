@@ -9,7 +9,7 @@
 ![Iniciar Sesion](Capturas/IniciarSesion.png)
 
 ## Iniciar Sesión - Validación 
-![Iniciar Sesion validacion](Capturas/IniciarSesion.validacion.png)
+![Iniciar Sesion validacion](Capturas/IniciarSesion-validacion.png)
 
 ## Registrarse 
 ![Registrarse](Capturas/Registrarse.png)
@@ -25,3 +25,7 @@
 ## Registrarse validacion 3
 ### Las contraseñas deben coincidir
 ![Registrarse](Capturas/Registrarse-validacion3.png)
+
+## Cartelera
+### Administrador
+![Registrarse](Capturas/CarteleraAdmin.png)
