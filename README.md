@@ -6,26 +6,26 @@
 ---
 # Inicio
 ## Iniciar Sesión
-![Iniciar Sesion](Capturas/IniciarSesion.png)
+![IniciarSesion](capturasAplicacion/IniciarSesion.png)
 
 ## Iniciar Sesión - Validación 
-![Iniciar Sesion validacion](Capturas/IniciarSesion-validacion.png)
+![IniciarSesionvalidacion](capturasAplicacion/IniciarSesion-validacion.png)
 
 ## Registrarse 
-![Registrarse](Capturas/Registrarse_0.png)
+![Registrarse](capturasAplicacion/Registrarse0.png)
 
 ## Registrarse validacion 1 
 ### No debe haber campos vacios a excepción del Telefono
-![Registrarse validacion](Capturas/Registrarse-validacion_1.png)
+![RegistrarseValidacion](capturasAplicacion/Registrarse-validacion1.png)
 
 ## Registrarse validacion 2
 ### La contraseña debera ser de al menos 8 caracteres
-![Registrarse validacion2](Capturas/Registrarse-validacion_2.png)
+![RegistrarseValidacion2](capturasAplicacion/Registrarse-validacion2.png)
 
 ## Registrarse validacion 3
 ### Las contraseñas deben coincidir
-![Registrarse validacion3](Capturas/Registrarse-validacion_3.png)
+![RegistrarseValidacion3](capturasAplicacion/Registrarse-validacion3.png)
 
 ## Cartelera
 ### Administrador
-![Cartelera Admin](Capturas/CarteleraAdmin.png)
+![CarteleraAdmin](capturasAplicacion/CarteleraAdmin.png)
