@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/estilos1.css">
 </head>
 <body>
-
 	<div class="contenedor tab-pane fade" id="registrarse" role="tabpanel" aria-labelledby="profile-tab">
 		<form action="post" class="formulario">
             <h1 class="encabezado">Registrarse</h1>
