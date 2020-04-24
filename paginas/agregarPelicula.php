@@ -8,15 +8,7 @@
 </head>
 <body>
 
-	<nav id="navegacion">
-		<a href="">Cartelera</a>
-		<select name="categorias" id="categorias" size="1">
-			<option>Fecha</option>
-			<option>Calificación</option>
-			<option>Nombre</option>
-		</select>
-		<a href="">Cerrar Sesión</a>
-	</nav>
+<?php require_once("../Menu.html") ?>
 
 	<h1 id="fecha">Editar película</h1>
 	<div class="margen">

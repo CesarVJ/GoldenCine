@@ -1,73 +1,70 @@
-.margen{
-	font-family:Arial;
-	font-size:20px;  
-	width:90%;
-	margin:50px auto;
-	border:2px solid black; 
-	padding:20px;
-	display:grid; 
-	grid-template-areas:"portada titulo titulo"
-	                    "portada descripcion descripcion"
-	                    "duracion actores boton"; 
-	grid-gap:15px;                    
+.margen {
+  font-family: Arial;
+  font-size: 20px;
+  width: 90%;
+  margin: 50px auto;
+  border: 2px solid black;
+  padding: 20px;
+  display: grid;
+  grid-template-areas:
+    "portada titulo titulo"
+    "portada descripcion descripcion"
+    "duracion actores boton";
+  grid-gap: 15px;
 }
 
-.inserta-portada{
-	background:white; 
-	
-	height:300px;
-	border:1px solid black;
-	display:grid;
-	align-items:center;
-	justify-content:center;
-	grid-area:portada;     
+.inserta-portada {
+  background: white;
+
+  height: 300px;
+  border: 1px solid black;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-area: portada;
 }
 
-.inserta-portada span{
-	font-size:20px;
-	font-family:Arial;
-	border-radius:5%;  
-	border:1px solid black;
-	padding:10px;
-	background:rgba(120,120,120,0.7);
-	cursor:pointer;    
+.inserta-portada span {
+  font-size: 20px;
+  font-family: Arial;
+  border-radius: 5%;
+  border: 1px solid black;
+  padding: 10px;
+  background: rgba(120, 120, 120, 0.7);
+  cursor: pointer;
 }
 
-.inserta-portada span:hover{
-	background:rgba(120,120,120,1);
+.inserta-portada span:hover {
+  background: rgba(120, 120, 120, 1);
 }
 
-.titulo{
-	grid-area:titulo; 
+.titulo {
+  grid-area: titulo;
 }
 
-.descripcion{
-	grid-area:descripcion; 
+.descripcion {
+  grid-area: descripcion;
 }
 
-.duracion{
-	grid-area:duracion; 
+.duracion {
+  grid-area: duracion;
 }
 
-.actores{
-	grid-area:actores; 
+.actores {
+  grid-area: actores;
 }
 
-.boton-agregar{
-	grid-area:boton; 
+.boton-agregar {
+  grid-area: boton;
 }
 
-.caja{
-	font-size:20px;
-	border-radius:6%;
-	width:50%;   
+.caja {
+  font-size: 20px;
+  border-radius: 6%;
+  width: 50%;
 }
 
-.area{
-	width:80%;
-	height:190px;  
+.area {
+  width: 80%;
+  height: 190px;
 }
-
-
-
-
