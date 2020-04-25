@@ -68,7 +68,7 @@
 		session_start();
 		if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
-            if($correo == "root@gmail.com"){
+            if($_SESSION["correo"] == "root@gmail.com"){
     			header("location: paginas/carteleraAdmin.php");
             }else{
                 header("location: paginas/carteleraCliente.php");
