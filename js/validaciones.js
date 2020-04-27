@@ -38,3 +38,25 @@
         }
         return true;
     }
+
+    function validarAñadirPelicula() {
+        var titulo = document.forms["form-añadirPelicula"]["titulo"].value;
+        var portada = document.forms["form-añadirPelicula"]["portada"].value;
+        var descripcion = document.forms["form-añadirPelicula"]["descripcion"].value;
+        var duracion = document.forms["form-añadirPelicula"]["duracion"].value;
+        var actores = document.forms["form-añadirPelicula"]["actores"].value;
+        var categoria = document.forms["form-añadirPelicula"]["categoria"].value;
+
+        let mensajeError = document.querySelector("#mensaje-error-añadirPelicula");
+        let error_añadir = document.querySelector("#error-añadir");
+
+
+        if (titulo == "" || portada == "" || descripcion == "" || duracion == "" || actores == "" || categoria == "") {
+            mensajeError.innerHTML = "Por favor, proporcione todos los datos solicitados";
+            error_añadir.style.display = "block";
+            return false;
+        }
+        return true;
+
+
+    }

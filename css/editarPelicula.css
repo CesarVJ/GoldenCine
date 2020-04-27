@@ -37,11 +37,13 @@
   background: rgba(120, 120, 120, 1);
 }
 
+
+
 .titulo {
   grid-area: titulo;
 }
 
-.descripcion {
+.contenedor-descripcion {
   grid-area: descripcion;
 }
 
@@ -61,13 +63,46 @@
   grid-area: boton;
 }
 
+.boton {
+  margin-bottom: 10px;
+
+}
+
 .caja {
   font-size: 20px;
   border-radius: 6%;
   width: 50%;
 }
 
-.area {
+.descripcion {
   width: 80%;
   height: 190px;
+}
+
+#titulo-descripcion {
+  width: 300px;
+  margin: 0px;
+}
+
+/*Mensajes de error*/
+.grupo-error {
+  text-align: left;
+  margin: 1px 25px;
+}
+
+#mensaje-error-añadirPelicula {
+  color: red;
+  display: inline-block;
+  font-size: 0.7rem;
+
+}
+
+.icono-error {
+  filter: invert(27%) sepia(51%) saturate(2878%) contrast(97%);
+  float: left;
+
+}
+
+#error-añadir {
+  display: none;
 }

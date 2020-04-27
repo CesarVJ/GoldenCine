@@ -26,9 +26,9 @@
 			<button class="boton" id="btn-eliminar">Eliminar</button>
 		</div>
 		<div class="agregar">
-			<a href="agregarPelicula.php">
+			<a href="añadirPelicula.php">
 			<span class="icon-plus"></span>
-</a>
+		</a>
 	    </div>
 	</div>
 </body>
