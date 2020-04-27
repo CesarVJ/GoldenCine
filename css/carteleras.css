@@ -23,7 +23,7 @@ ul {
   text-align: center;
 }
 
-#menu > li {
+#menu>li {
   text-decoration: none;
   color: white;
   float: left;
@@ -51,7 +51,7 @@ ul {
   padding: 0px;
 }
 
-#menu li:hover > ul {
+#menu li:hover>ul {
   display: block;
 }
 
@@ -138,6 +138,14 @@ ul {
   grid-area: eliminar;
   background: #ff2e63;
   color: #fff;
+  border-bottom-right-radius: 5px;
+}
+
+#btn-apartar {
+  border-bottom-left-radius: 5px;
+}
+
+#btn-calificar {
   border-bottom-right-radius: 5px;
 }
 
