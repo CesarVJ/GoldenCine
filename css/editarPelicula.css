@@ -15,7 +15,6 @@
 
 .inserta-portada {
   background: white;
-
   height: 300px;
   border: 1px solid black;
   display: grid;
@@ -52,6 +51,10 @@
 
 .actores {
   grid-area: actores;
+}
+
+.categoria {
+  margin-top: 10px;
 }
 
 .boton-agregar {
