@@ -1,8 +1,13 @@
 <?php
+	require("../modelo/Administrador.php");
 	require("../modelo/Pelicula.php");
 	require("../conexion.php");
+	session_start();
+
 	$conexion= abrirConexion();
 	$pelicula = new Pelicula();
+	$administrador = new Administrador();
+
 	if (isset($_GET['id'])){
 		//Se asignan los datos de la pelicula a editar
 		$pelicula->setId_pelicula($_GET['id']);
@@ -12,15 +17,33 @@
 
 		//Se asignan los datos al objeto tipo pelicula actual
 		$row = $datosPelicula->fetch_assoc();
+
 		$pelicula->setNombre_pelicula($row["nombre_pelicula"]);
 		$pelicula->setDescripcion($row["descripcion"]);
 		$pelicula->setActores($row["actores"]);
 		$pelicula->setPortada($row["portada"]);
 		$pelicula->setCategoria($row["categoria"]);
 		$pelicula->setDuracion($row["duracion"]);
-	} else {
-		header("location:CarteleraAdmin.php");
-	}
+
+		$id_pelicula =$pelicula->getId_pelicula();
+		$nombre_pelicula =$pelicula->getNombre_pelicula();
+		$calificacion = $pelicula->getCalificacion();
+		$descripcion =$pelicula->getDescripcion();
+		$actores = $pelicula->getActores();
+		$categoria = $pelicula->getCategoria();
+		$portada = $pelicula->getPortada();
+		$duracion = $pelicula->getDuracion();
+		$_SESSION['id_pelicula'] = $id_pelicula;
+		$_SESSION['nombre_pelicula'] = $nombre_pelicula;
+		$_SESSION['calificacion'] = $calificacion;
+		$_SESSION['descripcion'] = $descripcion;
+		$_SESSION['actores'] = $actores;
+		$_SESSION['categoria'] = $categoria;
+		$_SESSION['portada'] = $portada;
+		$_SESSION['duracion'] = $duracion;
+
+
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,8 +61,8 @@
 
 	<?php require_once("../Menu.html") ?>
 	<h1 id="fecha">Editar informacion de película</h1>
-	<form id="form-añadirPelicula" action="../añadirPelicula.php" method="post" name="form-anañadirPelicula"
-		onsubmit="return validarAñadirPelicula()">
+	<form id="form-añadirPelicula" action="cambioExitoso.php" method="post" name="form-anañadirPelicula"
+		onsubmit="return validarModificarPelicula()">
 		<div class="margen">
 
 			<div class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
@@ -49,7 +72,7 @@
 
 			<div class="titulo">
 				<label>Titulo:</label>
-				<input type="text" name="titulo" class="caja" value="<?php echo $pelicula->getNombre_pelicula(); ?>">
+				<input type="text" name="titulo" id="titulo" class="caja" value="<?php echo $pelicula->getNombre_pelicula(); ?>">
 			</div>
 
 			<div class="contenedor-descripcion">
@@ -104,7 +127,10 @@
 			</div>
 		</div>
 	</form>
+
 	</div>
+
+
 
 
 </body>

@@ -119,6 +119,7 @@
 									$_SESSION["loggedin"] = true;
 									$_SESSION["id"] = $id;
 									$_SESSION["correo"] = $correo;
+									$_SESSION['id_pelicula'] = "";
 									if($correo == "root@gmail.com"){ // Si es administrador, se le dirije a la Cartelera del Administrador
 										$_SESSION["existePelicula"] = false;
                                         header("location: paginas/carteleraAdmin.php");
