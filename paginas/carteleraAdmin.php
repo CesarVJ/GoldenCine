@@ -24,12 +24,17 @@
 		$consultaPeliculas = "select * from pelicula";
 		$listaPeliculas = $conexion -> query($consultaPeliculas);
 		
+		//Mientras encuentre peliculas, se van agregando al html
 		while($row = $listaPeliculas->fetch_assoc()){
 			$pelicula->setPortada($row["portada"]);
+			$pelicula->setId_pelicula($row["id_pelicula"]);
+
 			//echo "id: " . $row["id_pelicula"]. "Nombre: " . $row["nombre_pelicula"]. "Descripcion: ". $row["descripcion"]."<br>";
 	?>
 				<div class="contenedor-pelicula">
-					<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
+					<a href="editarInformacionPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>">
+						<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
+					</a>
 					<button class="boton" id="btn-agregar">Agregar horario</button>
 					<button class="boton" id="btn-eliminar">Eliminar</button>
 				</div>

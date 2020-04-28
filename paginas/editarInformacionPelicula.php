@@ -1,3 +1,37 @@
+<?php
+	require("../modelo/Pelicula.php");
+	require("../conexion.php");
+	$conexion= abrirConexion();
+	$pelicula = new Pelicula();
+	if (isset($_GET['id'])){
+		//Se asignan los datos de la pelicula a editar
+		$pelicula->setId_pelicula($_GET['id']);
+
+		$consultaPelicula = "select * from pelicula where id_pelicula = '".$pelicula->getId_pelicula()."'";
+		$datosPelicula = $conexion -> query($consultaPelicula);
+
+		$row = $datosPelicula->fetch_assoc();
+		$pelicula->setNombre_pelicula($row["nombre_pelicula"]);
+		$pelicula->setDescripcion($row["descripcion"]);
+		$pelicula->setActores($row["actores"]);
+		$pelicula->setPortada($row["portada"]);
+		$pelicula->setCategoria($row["categoria"]);
+		$pelicula->setDuracion($row["duracion"]);
+
+
+		echo $pelicula->getId_pelicula();
+		echo $pelicula->getNombre_pelicula();
+		echo $pelicula->getDescripcion();
+		echo $pelicula->getActores();
+		echo $pelicula->getPortada();
+		echo $pelicula->getCategoria();
+		echo $pelicula->getDuracion();
+		echo $pelicula->getCalificacion();
+
+	} else {
+		header("location:CarteleraAdmin.php");
+	}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +47,7 @@
 <body>
 
 	<?php require_once("../Menu.html") ?>
-	<h1 id="fecha">Añadir película</h1>
+	<h1 id="fecha">Editar informacion de película</h1>
 	<form id="form-añadirPelicula" action="../añadirPelicula.php" method="post" name="form-anañadirPelicula"
 		onsubmit="return validarAñadirPelicula()">
 		<div class="margen">
@@ -25,11 +59,11 @@
 
 			<div class="titulo">
 				<label>Titulo:</label>
-				<input type="text" name="titulo" class="caja">
+				<input type="text" name="titulo" class="caja" value="<?php echo $pelicula->getNombre_pelicula(); ?>">
 			</div>
 
 			<div class="contenedor-descripcion">
-				<p id="titulo-descripcion">Descrpción de la película:</p>
+				<p id="titulo-descripcion">Descripción de la película:</p>
 				<input type="textarea" name="descripcion" class="descripcion">
 			</div>
 
