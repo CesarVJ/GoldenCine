@@ -35,7 +35,7 @@
 					<a href="editarInformacionPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>">
 						<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
 					</a>
-					<button class="boton" id="btn-agregar">Agregar horario</button>
+					<button class="boton" id="btn-agregar"> <a id="agregar-horario" href="agregarHorarios.php"> Agregar horario</a></button>
 					<button class="boton" id="btn-eliminar">Eliminar</button>
 				</div>
 	<?php

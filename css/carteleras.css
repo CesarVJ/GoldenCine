@@ -120,6 +120,11 @@ ul {
   align-items: center;
 }
 
+#agregar-horario {
+  text-decoration: none;
+  color: #fff;
+}
+
 .portada {
   grid-area: imagen;
   width: 300px;

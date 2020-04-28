@@ -1,0 +1,81 @@
+.contenedor-agregar-horarios {
+	width: 80%;
+	margin: 40px auto;
+	border: 2px solid black;
+	padding: 20px;
+	font-family: Arial;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: "titulo titulo titulo"
+		"portada horario agregados";
+}
+
+.contenedor-agregar-horarios h1 {
+	text-align: center;
+}
+
+
+.inserta-portada {
+	width: 300px;
+	background: white;
+	height: 300px;
+	border: 1px solid black;
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	grid-area: portada;
+}
+
+.inserta-portada span {
+	font-size: 20px;
+	font-family: Arial;
+	border-radius: 5%;
+	border: 1px solid black;
+	padding: 10px;
+	background: rgba(120, 120, 120, 0.7);
+	cursor: pointer;
+}
+
+.inserta-portada span:hover {
+	background: rgba(120, 120, 120, 1);
+}
+
+.formacion-horario {
+	grid-area: horario;
+}
+
+.formacion-horario div {
+	margin-bottom: 25px;
+	font-size: 20px;
+}
+
+.formacion-horario div input {
+	border-radius: 5%;
+}
+
+#titulo {
+	grid-area: titulo;
+}
+
+.horarios-agregados {
+	grid-area: agregados;
+}
+
+.boton {
+	width: 80%;
+}
+
+.contenedor-agregados {
+	border: 1px solid black;
+	width: 100%;
+	height: 250px;
+	border-radius: 5%;
+}
+
+.contenedor-agregados ul {
+	list-style: none;
+}
+
+.contenedor-agregados ul li {
+	font-weight: bold;
+}
