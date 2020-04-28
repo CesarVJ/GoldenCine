@@ -10,6 +10,7 @@
 		$consultaPelicula = "select * from pelicula where id_pelicula = '".$pelicula->getId_pelicula()."'";
 		$datosPelicula = $conexion -> query($consultaPelicula);
 
+		//Se asignan los datos al objeto tipo pelicula actual
 		$row = $datosPelicula->fetch_assoc();
 		$pelicula->setNombre_pelicula($row["nombre_pelicula"]);
 		$pelicula->setDescripcion($row["descripcion"]);
@@ -17,17 +18,6 @@
 		$pelicula->setPortada($row["portada"]);
 		$pelicula->setCategoria($row["categoria"]);
 		$pelicula->setDuracion($row["duracion"]);
-
-
-		echo $pelicula->getId_pelicula();
-		echo $pelicula->getNombre_pelicula();
-		echo $pelicula->getDescripcion();
-		echo $pelicula->getActores();
-		echo $pelicula->getPortada();
-		echo $pelicula->getCategoria();
-		echo $pelicula->getDuracion();
-		echo $pelicula->getCalificacion();
-
 	} else {
 		header("location:CarteleraAdmin.php");
 	}
@@ -52,7 +42,7 @@
 		onsubmit="return validarAñadirPelicula()">
 		<div class="margen">
 
-			<div class="inserta-portada">
+			<div class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
 				<span> <input type="file" name="portada" value="Inserta portada"
 						accept=".jpg, .png, .svg, .jpeg"></span>
 			</div>
@@ -64,12 +54,12 @@
 
 			<div class="contenedor-descripcion">
 				<p id="titulo-descripcion">Descripción de la película:</p>
-				<input type="textarea" name="descripcion" class="descripcion">
+				<textarea name="descripcion" class="descripcion"><?php echo $pelicula->getDescripcion();?></textarea>
 			</div>
 
 			<div class="duracion">
 				<label for="duracion">Duración:</label>
-				<input type="text" name="duracion" class="caja">
+				<input type="text" name="duracion" class="caja" value="<?php echo $pelicula->getDuracion();?>">
 				<div class="categoria">
 					<label for="categoria">Categoria:</label>
 					<select name="categoria" id="categoria">
@@ -88,7 +78,7 @@
 
 			<div class="actores">
 				<label for="actores">Actores:</label>
-				<input type="text" name="actores" class="caja">
+				<input type="text" name="actores" class="caja" value="<?php echo $pelicula->getActores();?>">
 			</div>
 
 			<div class="boton-agregar">

@@ -23,6 +23,12 @@
   grid-area: portada;
 }
 
+.portada-activa {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .inserta-portada span {
   font-size: 20px;
   font-family: Arial;

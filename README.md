@@ -51,3 +51,7 @@
 ### Cliente
 
 ![CarteleraCliente](capturasAplicacion/CarteleraCliente.png)
+
+## Ediar informacion de Pelicula
+
+![EditarPelicula](capturasAplicacion/EditarPelicula.png)
