@@ -5,7 +5,11 @@ class Pelicula{
     private $calificacion =0.0;
     private $descripcion ="";
     private $actores = "";
-    private $categoria = "";
+	private $categoria = "";
+	private $portada = "";
+    private $duracion = 0;
+
+	
 
 
 
@@ -56,6 +60,22 @@ class Pelicula{
 
 	public function setCategoria($categoria){
 		$this->categoria = $categoria;
+	}
+
+	public function getPortada(){
+		return $this->portada;
+	}
+
+	public function setPortada($portada){
+		$this->portada = $portada;
+	}
+
+	public function getDuracion(){
+		return $this->duracion;
+	}
+
+	public function setDuracion($duracion){
+		$this->duracion = $duracion;
 	}
 
 }

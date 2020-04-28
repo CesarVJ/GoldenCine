@@ -62,7 +62,21 @@
 			</div>
 			<div class="grupo-error" id="error-añadir">
 				<img class="icono-error" src="../img/error.svg" alt="error">
-				<p class="mensaje-error" id="mensaje-error-añadirPelicula"></p>
+				<p class="mensaje-error" id="mensaje-error-añadirPelicula">
+				<?php 
+					include("../añadirPelicula.php");
+					if($existePelicula == true){
+				?>
+						La pelicula ya existe
+				<?php
+					}else{
+				?>
+						Holaa
+				<?php	
+					}				
+				?>
+
+				</p>
 			</div>
 		</div>
 	</form>
