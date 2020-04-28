@@ -16,14 +16,25 @@
 	</header>	
 
 	<div id="contenedor-invitado" class="contenedor">
-		<div class="contenedor-pelicula">
-		<?php include_once('../portadas.php')?>
- 			<img src="<?php echo $portada; ?>" id="portada">
-		</div>
-		<div class="contenedor-pelicula">
-		<?php include_once('../portadas.php')?>
- 			<img src="../img/portadas/joker.jpg" id="portada">
-		</div>
+	<?php
+		require('../conexion.php');
+		require('../modelo/Pelicula.php');
+
+		$pelicula = new Pelicula();
+
+		$conexion = abrirConexion();
+		$consultaPeliculas = "select * from pelicula";
+		$listaPeliculas = $conexion -> query($consultaPeliculas);
+		
+		while($row = $listaPeliculas->fetch_assoc()){
+			$pelicula->setPortada($row["portada"]);
+	?>
+				<div class="contenedor-pelicula">
+					<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
+				</div>
+	<?php
+		}
+	?>
 	</div>
 	<aside id="contenedor-anuncio">
 		<div id="anuncio"> 

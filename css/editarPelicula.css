@@ -77,6 +77,9 @@
 .descripcion {
   width: 80%;
   height: 190px;
+  word-wrap: break-word;
+  word-break: break-all;
+  -ms-word-break: break-all;
 }
 
 #titulo-descripcion {

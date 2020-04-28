@@ -30,7 +30,7 @@
 
 			<div class="contenedor-descripcion">
 				<p id="titulo-descripcion">Descrpción de la película:</p>
-				<input type="textarea" name="descripcion" class="descripcion"></textarea>
+				<input type="textarea" name="descripcion" class="descripcion" wrap="hard"></textarea>
 			</div>
 
 			<div class="duracion">

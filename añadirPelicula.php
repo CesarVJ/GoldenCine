@@ -33,7 +33,8 @@
                 }
                 //Se crea el insert en sql
                 $consulta = "insert into pelicula(id_pelicula, nombre_pelicula, descripcion, duracion, actores, calificacion, portada, categoria) values(?, ?, ?, ?, ?, ?, ?, ?)";
-                if($statement = mysqli_prepare($conexion, $consulta)){                
+                if($statement = mysqli_prepare($conexion, $consulta)){      
+                    //Se asignan los datos del formulario a un objeto de tipo Pelicula          
                     $pelicula->setId_pelicula("P".($num_peliculas + 1)."");
                     $pelicula->setNombre_pelicula(trim($_POST["titulo"]));
                     $pelicula->setDescripcion(trim($_POST["descripcion"]));
@@ -57,14 +58,13 @@
         }
     }
     /*
-    
-                    $id_pelicula = $pelicula->getId_pelicula();
-                    $nombre_pelicula = $pelicula->getNombre_pelicula();
-                    $descripcion = $pelicula->getDescripcion();
-                    $actores= $pelicula->getActores();
-                    $portada=$pelicula->getPortada();
-                    $categoria =$pelicula->getCategoria();
-                    $duracion =$pelicula->getDuracion();
-                    $calificacion = $pelicula->getCalificacion();
+     $id_pelicula = $pelicula->getId_pelicula();
+     $nombre_pelicula = $pelicula->getNombre_pelicula();
+     $descripcion = $pelicula->getDescripcion();
+     $actores= $pelicula->getActores();
+     $portada=$pelicula->getPortada();
+     $categoria =$pelicula->getCategoria();
+     $duracion =$pelicula->getDuracion();
+     $calificacion = $pelicula->getCalificacion();
     */
 ?>

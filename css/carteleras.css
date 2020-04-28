@@ -120,7 +120,7 @@ ul {
   align-items: center;
 }
 
-#portada {
+.portada {
   grid-area: imagen;
   width: 250px;
   height: 300px;

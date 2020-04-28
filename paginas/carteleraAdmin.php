@@ -10,21 +10,32 @@
 </head>
 <body>
 
+
 <?php require_once("../Menu.html") ?>
 	<h1 id="fecha">Cartelera Febrero 2020</h1>
 	<div class="contenedor">
-		<div class="contenedor-pelicula">
-		<?php include_once('../portadas.php')?>
- 			<img src="<?php echo $portada; ?>" id="portada">
-			<button class="boton" id="btn-agregar">Agregar horario</button>
-			<button class="boton" id="btn-eliminar">Eliminar</button>
-		</div>
-		<div class="contenedor-pelicula">
-		<?php include_once('../portadas.php')?>
- 			<img src="../img/portadas/joker.jpg" id="portada">
-			<button class="boton" id="btn-agregar">Agregar horario</button>
-			<button class="boton" id="btn-eliminar">Eliminar</button>
-		</div>
+	<?php
+		require('../conexion.php');
+		require('../modelo/Pelicula.php');
+
+		$pelicula = new Pelicula();
+
+		$conexion = abrirConexion();
+		$consultaPeliculas = "select * from pelicula";
+		$listaPeliculas = $conexion -> query($consultaPeliculas);
+		
+		while($row = $listaPeliculas->fetch_assoc()){
+			$pelicula->setPortada($row["portada"]);
+			//echo "id: " . $row["id_pelicula"]. "Nombre: " . $row["nombre_pelicula"]. "Descripcion: ". $row["descripcion"]."<br>";
+	?>
+				<div class="contenedor-pelicula">
+					<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
+					<button class="boton" id="btn-agregar">Agregar horario</button>
+					<button class="boton" id="btn-eliminar">Eliminar</button>
+				</div>
+	<?php
+		}
+	?>
 		<div class="agregar">
 			<a href="añadirPelicula.php">
 			<span class="icon-plus"></span>
