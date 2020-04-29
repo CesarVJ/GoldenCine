@@ -139,6 +139,11 @@ ul {
   border-bottom-left-radius: 5px;
 }
 
+.btn-eliminar, .btn-eliminar:hover{
+  text-decoration: none;
+  color: #ededed;
+}
+
 #btn-eliminar {
   grid-area: eliminar;
   background: #ff2e63;

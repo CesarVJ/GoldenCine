@@ -20,6 +20,23 @@ class Administrador{
         }
     }
 
+    public function eliminarPelicula($conexion, $id_pelicula){
+		$sql = "DELETE FROM pelicula WHERE id_pelicula = ?";
+		if($stmt = mysqli_prepare($conexion, $sql)){
+			mysqli_stmt_bind_param($stmt, "s", $param_id);
+			$param_id = $id_pelicula;
+			if(mysqli_stmt_execute($stmt)){
+				header("location: index.php");
+				exit();
+			} else{
+				echo "No se pudo eliminar la pelicula";
+			}
+		}
+		# Se cierra la conexion
+		mysqli_stmt_close($stmt);
+		mysqli_close($conexion);
+	}
+
 	public function getId(){
 		return $this->id;
 	}

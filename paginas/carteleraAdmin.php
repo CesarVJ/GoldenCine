@@ -41,10 +41,10 @@
 				<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
 			</a>
 			<button class="boton" id="btn-agregar"> <a id="agregar-horario" href="agregarHorarios.php"> Agregar	horario</a></button>
-			<button class="boton btn btn-danger" id="btn-eliminar" type="button" data-toggle="modal" data-target="#mensaje-eliminar">Eliminar</button>
+			<button class="boton btn btn-danger" id="btn-eliminar" type="button" data-toggle="modal" data-target="#mensaje-eliminar<?php echo $pelicula->getId_pelicula();?>">Eliminar</button>
 
 		</div>
-		<div class="modal fade" id="mensaje-eliminar" tabindex="-1" role="dialog" aria-labelledby="mensaje-eliminar"
+		<div class="modal fade" id="mensaje-eliminar<?php echo $pelicula->getId_pelicula();?>" tabindex="-1" role="dialog" aria-labelledby="mensaje-eliminar"
 		aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -60,7 +60,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn btn-danger">Eliminar Pelicula</button>
+					<button type="button" class="btn btn-danger"><a class="btn-eliminar" href="../EliminarPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>">Eliminar Pelicula</a></button>
 				</div>
 			</div>
 		</div>
