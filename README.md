@@ -52,6 +52,10 @@
 
 ![CarteleraCliente](capturasAplicacion/CarteleraCliente.png)
 
-## Ediar informacion de Pelicula
+## Editar informacion de Pelicula
 
 ![EditarPelicula](capturasAplicacion/EditarPelicula.png)
+
+## Eliminar Pelicula
+
+![EliminarPelicula](capturasAplicacion/EliminarPelicula.png)
