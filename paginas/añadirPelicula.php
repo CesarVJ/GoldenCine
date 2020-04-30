@@ -40,14 +40,14 @@
 					<label for="categoria">Categoria:</label>
 					<select name="categoria" id="categoria">
 						<option>Selecciona categoria</option>
-						<option value="Accion">Accion</option>
-						<option value="Aventura">Aventura</option>
-						<option value="Ciencia-Ficcion">Ciencia Ficcion</option>
-						<option value="Terror">Terror</option>
-						<option value="Drama">Drama</option>
-						<option value="Comedia">Comedia</option>
-						<option value="Infantiles">Infantiles</option>
-						<option value="Otro">Otro</option>
+						<option value="accion">Accion</option>
+						<option value="aventura">Aventura</option>
+						<option value="ciencia ficcion">Ciencia Ficcion</option>
+						<option value="terror">Terror</option>
+						<option value="drama">Drama</option>
+						<option value="comedia">Comedia</option>
+						<option value="infantiles">Infantiles</option>
+						<option value="otro">Otro</option>
 					</select>
 				</div>
 			</div>

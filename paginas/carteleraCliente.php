@@ -20,7 +20,16 @@
 		$pelicula = new Pelicula();
 
 		$conexion = abrirConexion();
-		$consultaPeliculas = "select * from pelicula";
+		$consultaPeliculas="";
+        if (isset($_GET['categoria'])){
+			if($_GET['categoria'] == "CienciaFiccion"){
+				$consultaPeliculas = "select * from pelicula where categoria = 'ciencia ficcion'";
+			}else{
+				$consultaPeliculas = "select * from pelicula where categoria = '".$_GET['categoria']."'";
+			}
+        }else{
+			$consultaPeliculas = "select * from pelicula";
+        }
 		$listaPeliculas = $conexion -> query($consultaPeliculas);
 		
 		while($row = $listaPeliculas->fetch_assoc()){
