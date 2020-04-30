@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<?php require_once("../Menu.html") ?>
+<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Cartelera Febrero 2020</h1>
 	<div class="contenedor">
 	<?php

@@ -1,3 +1,14 @@
+<?php
+    session_start();
+	$cartelera="";
+	if($_SESSION['tipo']=='Administrador'){
+		$catalogo="paginas/CarteleraAdmin.php";
+	}else{
+		$catalogo="paginas/carteleraCliente.php";
+    }
+?>
+
+
 <nav id="navegacion">
     <ul id="menu">
         <li><a href="../index.php">Cartelera</a></li>

@@ -12,7 +12,7 @@
 
 <body>
 
-	<?php require_once("../Menu.html") ?>
+	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Añadir película</h1>
 	<form id="form-añadirPelicula" action="../añadirPelicula.php" method="post" name="form-anañadirPelicula"
 		onsubmit="return validarAñadirPelicula()">

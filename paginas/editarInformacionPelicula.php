@@ -59,7 +59,7 @@
 
 <body>
 
-	<?php require_once("../Menu.html") ?>
+	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Editar informacion de película</h1>
 	<form id="form-añadirPelicula" action="cambioExitoso.php" method="post" name="form-anañadirPelicula"
 		onsubmit="return validarModificarPelicula()">
