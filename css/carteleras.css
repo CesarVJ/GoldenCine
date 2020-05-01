@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -82,7 +84,7 @@ ul {
 }
 
 #fecha {
-  font-family: Popins;
+  font-family: Poppins;
   font-size: 40px;
   font-weight: 600;
   /*color: white;
@@ -122,6 +124,7 @@ ul {
   justify-content: center;
   align-items: center;
 }
+
 
 #agregar-horario {
   text-decoration: none;
@@ -208,6 +211,42 @@ ul {
 }
 
 /*Partes exclusivas de la cartelera cliente*/
+.contenedor-pelicula-cliente {
+  height: 300px;
+  width: 300px;
+  background-color: rgba(120, 120, 120, 0.2);
+  border-radius: 1%;
+  display: grid;
+  grid-column-gap: 0px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 300px 50px;
+  grid-template-areas:
+    "imagen imagen"
+    "apartar calificar";
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-apartar {
+  grid-area: apartar;
+  font-weight: bold;
+
+}
+
+#btn-calificar {
+  grid-area: calificar;
+  font-weight: bold;
+}
+
+.btn-primary,
+.btn-warning {
+  display: inline-block;
+  width: 150px;
+  padding: 6px;
+  border: 0px;
+  margin: 10px auto;
+  margin-bottom: 90px;
+}
 
 /*Partes exclusivas de la cartelera Invitado*/
 
