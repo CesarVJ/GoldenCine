@@ -15,7 +15,7 @@
 	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Añadir película</h1>
 	<form id="form-añadirPelicula" action="../añadirPelicula.php" method="post" name="form-anañadirPelicula"
-		onsubmit="return validarAñadirPelicula()">
+		onsubmit="return validarAñadirPelicula()" enctype="multipart/form-data">
 		<div class="margen">
 
 			<div class="inserta-portada">

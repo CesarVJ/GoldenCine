@@ -1,50 +1,4 @@
-<?php
-	require("../modelo/Administrador.php");
-	require("../modelo/Pelicula.php");
-	require("../conexion.php");
-	session_start();
-
-	$conexion= abrirConexion();
-	$pelicula = new Pelicula();
-	$administrador = new Administrador();
-
-	if (isset($_GET['id'])){
-		//Se asignan los datos de la pelicula a editar
-		$pelicula->setId_pelicula($_GET['id']);
-
-		$consultaPelicula = "select * from pelicula where id_pelicula = '".$pelicula->getId_pelicula()."'";
-		$datosPelicula = $conexion -> query($consultaPelicula);
-
-		//Se asignan los datos al objeto tipo pelicula actual
-		$row = $datosPelicula->fetch_assoc();
-
-		$pelicula->setNombre_pelicula($row["nombre_pelicula"]);
-		$pelicula->setDescripcion($row["descripcion"]);
-		$pelicula->setActores($row["actores"]);
-		$pelicula->setPortada($row["portada"]);
-		$pelicula->setCategoria($row["categoria"]);
-		$pelicula->setDuracion($row["duracion"]);
-
-		$id_pelicula =$pelicula->getId_pelicula();
-		$nombre_pelicula =$pelicula->getNombre_pelicula();
-		$calificacion = $pelicula->getCalificacion();
-		$descripcion =$pelicula->getDescripcion();
-		$actores = $pelicula->getActores();
-		$categoria = $pelicula->getCategoria();
-		$portada = $pelicula->getPortada();
-		$duracion = $pelicula->getDuracion();
-		$_SESSION['id_pelicula'] = $id_pelicula;
-		$_SESSION['nombre_pelicula'] = $nombre_pelicula;
-		$_SESSION['calificacion'] = $calificacion;
-		$_SESSION['descripcion'] = $descripcion;
-		$_SESSION['actores'] = $actores;
-		$_SESSION['categoria'] = $categoria;
-		$_SESSION['portada'] = $portada;
-		$_SESSION['duracion'] = $duracion;
-
-
-}
-?>
+<?php require_once("../modelo/ConsultaPeliculasCartelera.php")?>
 <!DOCTYPE html>
 <html>
 
@@ -52,6 +6,8 @@
 	<title>Agregar película</title>
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/carteleras.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../css/editarPelicula.css?v=<?php echo time(); ?>">
 	<script src="../js/validaciones.js"></script>
@@ -61,12 +17,12 @@
 
 	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Editar informacion de película</h1>
-	<form id="form-añadirPelicula" action="cambioExitoso.php" method="post" name="form-anañadirPelicula"
-		onsubmit="return validarModificarPelicula()">
+	<form id="form-editarInformacionPelicula" action="cambioExitoso.php?id=<?php echo $id_pelicula;?>" method="post" name="form-editarInformacionPelicula"
+		onsubmit="return validarModificarPelicula()" enctype="multipart/form-data">
 		<div class="margen">
 
 			<div class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
-				<span> <input type="file" name="portada" value="Inserta portada"
+				<span> <input type="file" name="portada" id="portada" value="Inserta portada"
 						accept=".jpg, .png, .svg, .jpeg"></span>
 			</div>
 
@@ -89,13 +45,36 @@
 						<option>Selecciona categoria</option>
 						<option value="Accion">Accion</option>
 						<option value="Aventura">Aventura</option>
-						<option value="Ciencia-Ficcion">Ciencia Ficcion</option>
+						<option value="Ciencia Ficcion">Ciencia Ficcion</option>
 						<option value="Terror">Terror</option>
 						<option value="Drama">Drama</option>
 						<option value="Comedia">Comedia</option>
 						<option value="Infantiles">Infantiles</option>
 						<option value="Otro">Otro</option>
 					</select>
+					<script>
+                        (function(){
+                            var categoria = '<?php echo $categoria; ?>';
+                            if(categoria === "Accion" ){
+                                document.getElementById('categoria').value="Accion";
+                            }else if(categoria === "Aventura"){
+                                document.getElementById('categoria').value="Aventura";
+                            }else if(categoria === "Ciencia Ficcion"){
+                                document.getElementById('categoria').value="Ciencia Ficcion";
+                            }else if(categoria ==="Terror" ){
+                                document.getElementById('categoria').value="Terror";
+							}else if(categoria ==="Drama" ){
+                                document.getElementById('categoria').value="Drama";
+							}else if(categoria === "Comedia"){
+                                document.getElementById('categoria').value="Comedia";
+							}else if(categoria === "Infantiles"){
+                                document.getElementById('categoria').value="Infantiles";
+							}else{
+                                document.getElementById('categoria').value="Otro";
+							}
+                        })();
+  
+                    </script>
 				</div>
 			</div>
 
@@ -105,31 +84,27 @@
 			</div>
 
 			<div class="boton-agregar">
-				<input type="submit" value="Añadir película" class="boton">
+				<input type="submit" value="Actualizar informacion" class="btn btn-success">
 			</div>
 			<div class="grupo-error" id="error-añadir">
 				<img class="icono-error" src="../img/error.svg" alt="error">
 				<p class="mensaje-error" id="mensaje-error-añadirPelicula">
-				<?php 
-					include("../añadirPelicula.php");
-					if($existePelicula == true){
-				?>
-						La pelicula ya existe
-				<?php
-					}else{
-				?>
-						Holaa
-				<?php	
-					}				
-				?>
-
 				</p>
 			</div>
 		</div>
 	</form>
 
 	</div>
-
+    <script src="js/validaciones.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
 
 

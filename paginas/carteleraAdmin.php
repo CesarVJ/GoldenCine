@@ -29,7 +29,7 @@
         $consultaPeliculas="";
         if (isset($_GET['categoria'])){
 			if($_GET['categoria'] == "CienciaFiccion"){
-				$consultaPeliculas = "select * from pelicula where categoria = 'ciencia ficcion'";
+				$consultaPeliculas = "select * from pelicula where categoria = 'Ciencia Ficcion'";
 			}else{
 				$consultaPeliculas = "select * from pelicula where categoria = '".$_GET['categoria']."'";
 			}

@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: rgba(127, 189, 180, 0.4);
+  background: #fff;
+  /*rgba(127, 189, 180, 0.4);*/
 }
 
 #menu {
@@ -81,12 +82,14 @@ ul {
 }
 
 #fecha {
-  font-family: Arial;
+  font-family: Popins;
   font-size: 40px;
-  color: white;
+  font-weight: 600;
+  /*color: white;
+    text-shadow: 2px 2px 2px black;
+  */
   margin-left: 80px;
   margin-top: 20px;
-  text-shadow: 2px 2px 2px black;
 }
 
 /*Código para el diseño de las peliculas de cliente*/
@@ -139,7 +142,8 @@ ul {
   border-bottom-left-radius: 5px;
 }
 
-.btn-eliminar, .btn-eliminar:hover{
+.btn-eliminar,
+.btn-eliminar:hover {
   text-decoration: none;
   color: #ededed;
 }

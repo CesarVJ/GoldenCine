@@ -9,7 +9,7 @@
         $id_pelicula = $nombre_pelicula = $descripcion = $actores=$portada=$categoria = "";
         $duracion = $calificacion = 0; 
         #echo "Se abrio la conexion";
-        if(!empty(trim($_POST["titulo"])) && !empty(trim($_POST["portada"]))
+        if(!empty(trim($_POST["titulo"])) && !empty(basename($_FILES['portada']['name']))
                 && !empty(trim($_POST["descripcion"])) && !empty(trim($_POST["duracion"])) 
                     &&  !empty(trim($_POST["actores"])) && !empty(trim($_POST["categoria"]))){                        
 
@@ -39,7 +39,7 @@
                     $pelicula->setNombre_pelicula(trim($_POST["titulo"]));
                     $pelicula->setDescripcion(trim($_POST["descripcion"]));
                     $pelicula->setActores(trim($_POST["actores"]));
-                    $pelicula->setPortada(trim($_POST["portada"]));
+                    $pelicula->setPortada(basename($_FILES['portada']['name']));
                     $pelicula->setCategoria(trim($_POST["categoria"]));
                     $pelicula->setDuracion(trim($_POST["duracion"]));
                     
@@ -48,6 +48,7 @@
         
                     if(mysqli_stmt_execute($statement)){
                         header("location: paginas/carteleraAdmin.php");
+                        require_once("modelo/AlmacenaPortada.php");
                     } else{
                         echo "Algo ha salido mal";
                     }
