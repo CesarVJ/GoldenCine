@@ -1,0 +1,41 @@
+.contenedor-g {
+	width: 90%;
+	margin: 20px auto;
+	border: 2px solid black;
+	display: grid;
+	padding: 20px;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-areas: "superior horarios"
+		"asientos horarios";
+	grid-column-gap: 30px;
+}
+
+.contenedor-asientos {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	grid-template-rows: repeat(4, 30px);
+	grid-gap: 10px;
+	grid-area: asientos;
+	width: 100%;
+}
+
+label {
+	text-align: center;
+}
+
+.contenedor-superior {
+	grid-area: superior;
+	margin-left: 50px;
+	display: flex;
+}
+
+#primero {
+	margin-right: 150px;
+}
+
+.horarios-disponibles {
+	border: 1px solid black;
+	width: 100%;
+	grid-area: horarios;
+
+}
