@@ -80,7 +80,9 @@
 
 			<div class="actores">
 				<label for="actores">Actores:</label>
-				<input type="text" name="actores" class="caja" value="<?php echo $pelicula->getActores();?>">
+				<input type="text" name="actores" class="caja" value="<?php echo $pelicula->getActores();?>"><br>
+				<label for="precio">Precio:</label>
+				<input id="precio" type="number" min="1" step="any" name="precio" value="<?php echo $pelicula->getPrecio();?>"/>
 			</div>
 
 			<div class="boton-agregar">

@@ -24,6 +24,8 @@
 		$pelicula->setPortada($row["portada"]);
 		$pelicula->setCategoria($row["categoria"]);
 		$pelicula->setDuracion($row["duracion"]);
+		$pelicula->setPrecio($row["precio"]);
+
 
 		$id_pelicula =$pelicula->getId_pelicula();
 		$nombre_pelicula =$pelicula->getNombre_pelicula();
@@ -32,7 +34,9 @@
 		$actores = $pelicula->getActores();
 		$categoria = $pelicula->getCategoria();
 		$portada = $pelicula->getPortada();
-        $duracion = $pelicula->getDuracion();
+		$duracion = $pelicula->getDuracion();
+		$precio = $pelicula->getPrecio();
+
         
         /*
 		$_SESSION['id_pelicula'] = $id_pelicula;

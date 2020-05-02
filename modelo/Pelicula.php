@@ -7,7 +7,8 @@ class Pelicula{
     private $actores = "";
 	private $categoria = "";
 	private $portada = "";
-    private $duracion = 0;
+	private $duracion = 0;
+	private $precio = 0.0;
 
 	
 
@@ -76,6 +77,14 @@ class Pelicula{
 
 	public function setDuracion($duracion){
 		$this->duracion = $duracion;
+	}
+
+	public function getPrecio(){
+		return $this->precio;
+	}
+
+	public function setPrecio($precio){
+		$this->precio = $precio;
 	}
 
 }

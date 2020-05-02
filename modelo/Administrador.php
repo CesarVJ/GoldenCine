@@ -8,21 +8,21 @@ class Administrador{
     private $contraseña = "";
 
 
-    public function modificarInfoPelicula($conexion,$id_pelicula,$nombre_pelicula, $calificacion, $descripcion, $actores, $categoria, $portada, $duracion ){
+    public function modificarInfoPelicula($conexion,$id_pelicula,$nombre_pelicula, $calificacion, $descripcion, $actores, $categoria, $portada, $duracion , $precio){
 		echo $descripcion ."". $actores."". $categoria."".$duracion;
 
 		if($portada== null || $portada == ""){
-            $sql = "UPDATE pelicula SET nombre_pelicula=?, descripcion=?, duracion=?, actores=?, calificacion=?, categoria=? WHERE id_pelicula=?";
+            $sql = "UPDATE pelicula SET nombre_pelicula=?, descripcion=?, duracion=?, actores=?, calificacion=?, categoria=? , precio=? WHERE id_pelicula=?";
         }else{
-            $sql = "UPDATE pelicula SET nombre_pelicula=?, descripcion=?, duracion=?, actores=?, calificacion=?, categoria=?, portada=? WHERE id_pelicula=?";
+            $sql = "UPDATE pelicula SET nombre_pelicula=?, descripcion=?, duracion=?, actores=?, calificacion=?, categoria=?, precio=? portada=? WHERE id_pelicula=?";
 		}
 
 
 		if($stmt = mysqli_prepare($conexion, $sql)){
             if($portada== null || $portada == ""){
-                mysqli_stmt_bind_param($stmt,"ssdsdss", $nombre_pelicula, $descripcion, $duracion, $actores, $calificacion, $categoria, $id_pelicula);
+                mysqli_stmt_bind_param($stmt,"ssdsdsds", $nombre_pelicula, $descripcion, $duracion, $actores, $calificacion, $categoria, $precio, $id_pelicula);
             }else{
-                mysqli_stmt_bind_param($stmt,"ssdsdsss", $nombre_pelicula,  $descripcion, $duracion, $actores, $calificacion, $categoria, $portada, $id_pelicula);
+                mysqli_stmt_bind_param($stmt,"ssdsdsdss", $nombre_pelicula,  $descripcion, $duracion, $actores, $calificacion, $categoria,$precio, $portada, $id_pelicula);
             }
             
             echo "Id: ".$id_pelicula;

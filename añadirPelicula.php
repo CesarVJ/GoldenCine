@@ -7,7 +7,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $conexion = abrirConexion();
         $id_pelicula = $nombre_pelicula = $descripcion = $actores=$portada=$categoria = "";
-        $duracion = $calificacion = 0; 
+        $duracion = $calificacion = $precio= 0; 
         #echo "Se abrio la conexion";
         if(!empty(trim($_POST["titulo"])) && !empty(basename($_FILES['portada']['name']))
                 && !empty(trim($_POST["descripcion"])) && !empty(trim($_POST["duracion"])) 
@@ -32,7 +32,7 @@
                     mysqli_free_result($resultado);
                 }
                 //Se crea el insert en sql
-                $consulta = "insert into pelicula(id_pelicula, nombre_pelicula, descripcion, duracion, actores, calificacion, portada, categoria) values(?, ?, ?, ?, ?, ?, ?, ?)";
+                $consulta = "insert into pelicula(id_pelicula, nombre_pelicula, descripcion, duracion, actores, calificacion, portada, categoria, precio) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 if($statement = mysqli_prepare($conexion, $consulta)){      
                     //Se asignan los datos del formulario a un objeto de tipo Pelicula          
                     $pelicula->setId_pelicula("P".($num_peliculas + 1)."");
@@ -42,9 +42,11 @@
                     $pelicula->setPortada(basename($_FILES['portada']['name']));
                     $pelicula->setCategoria(trim($_POST["categoria"]));
                     $pelicula->setDuracion(trim($_POST["duracion"]));
+                    $pelicula->setPrecio(trim($_POST["precio"]));
+
                     
                     //Se inserta la nueva pelicula
-                    mysqli_stmt_bind_param($statement, "ssssssss",$pelicula->getId_pelicula(), $pelicula->getNombre_pelicula(), $pelicula->getDescripcion(), $pelicula->getDuracion(), $pelicula->getActores(), $pelicula->getCalificacion(), $pelicula->getPortada(), $pelicula->getCategoria());
+                    mysqli_stmt_bind_param($statement, "sssssssss",$pelicula->getId_pelicula(), $pelicula->getNombre_pelicula(), $pelicula->getDescripcion(), $pelicula->getDuracion(), $pelicula->getActores(), $pelicula->getCalificacion(), $pelicula->getPortada(), $pelicula->getCategoria(), $pelicula->getPrecio());
         
                     if(mysqli_stmt_execute($statement)){
                         header("location: paginas/carteleraAdmin.php");

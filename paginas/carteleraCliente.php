@@ -46,7 +46,7 @@
 			<a href="verInformacionPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>">
 				<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
 			</a>
-			<button class="btn btn-primary" id="btn-apartar">Apartar Boleto</button>
+			<button class="btn btn-primary" id="btn-reservar">Reservar asiento</button>
 			<button class="btn btn-warning" id="btn-calificar">Calificar</button>
 		</div>
 		<?php

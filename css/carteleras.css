@@ -158,7 +158,7 @@ ul {
   border-bottom-right-radius: 5px;
 }
 
-#btn-apartar {
+#btn-reservar {
   border-bottom-left-radius: 5px;
 }
 
@@ -227,7 +227,7 @@ ul {
   align-items: center;
 }
 
-#btn-apartar {
+#btn-reservar {
   grid-area: apartar;
   font-weight: bold;
 

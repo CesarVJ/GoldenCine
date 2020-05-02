@@ -40,21 +40,23 @@
 					<label for="categoria">Categoria:</label>
 					<select name="categoria" id="categoria">
 						<option>Selecciona categoria</option>
-						<option value="accion">Accion</option>
-						<option value="aventura">Aventura</option>
-						<option value="ciencia ficcion">Ciencia Ficcion</option>
-						<option value="terror">Terror</option>
-						<option value="drama">Drama</option>
-						<option value="comedia">Comedia</option>
-						<option value="infantiles">Infantiles</option>
-						<option value="otro">Otro</option>
+						<option value="Accion">Accion</option>
+						<option value="Aventura">Aventura</option>
+						<option value="Ciencia Ficcion">Ciencia Ficcion</option>
+						<option value="Terror">Terror</option>
+						<option value="Drama">Drama</option>
+						<option value="Comedia">Comedia</option>
+						<option value="Infantiles">Infantiles</option>
+						<option value="Otro">Otro</option>
 					</select>
 				</div>
 			</div>
 
 			<div class="actores">
 				<label for="actores">Actores:</label>
-				<input type="text" name="actores" class="caja">
+				<input type="text" name="actores" class="caja"><br>
+				<label for="precio">Precio:</label>
+				<input id="precio" type="number" min="1" step="any" name="precio"/>
 			</div>
 
 			<div class="boton-agregar">
