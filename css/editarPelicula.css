@@ -13,6 +13,11 @@
   grid-gap: 15px;
 }
 
+.visual {
+  width: 85%;
+
+}
+
 .inserta-portada {
   background: white;
   height: 300px;
@@ -27,6 +32,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#portada-vista {
+  width: 280px;
 }
 
 .inserta-portada span {
@@ -80,12 +89,23 @@
   width: 50%;
 }
 
+#nombre_pelicula {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
 .descripcion {
   width: 80%;
   height: 190px;
   word-wrap: break-word;
   word-break: break-all;
   -ms-word-break: break-all;
+}
+
+.vista {
+  margin: 0;
+  width: 100%;
+
 }
 
 #titulo-descripcion {
@@ -114,4 +134,14 @@
 
 #error-añadir {
   display: none;
+}
+
+#reservar-asiento {
+  width: 15rem;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.boton-reservar {
+  text-align: right;
 }

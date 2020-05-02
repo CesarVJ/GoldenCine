@@ -18,49 +18,33 @@
 	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Informacion de película</h1>
 	<form id="form-verInformacionPelicula" action="?id=<?php echo $id_pelicula;?>" method="post" name="form-verInformacionPelicula">
-		<div class="margen">
+		<div class="margen visual">
 
-			<div class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
-				<span> <input type="file" name="portada" id="portada" value="Inserta portada"
-						accept=".jpg, .png, .svg, .jpeg"></span>
+			<div id="portada-vista" class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
 			</div>
 
 			<div class="titulo">
-				<label>Titulo:</label>
-				<input type="text" name="titulo" id="titulo" class="caja" value="<?php echo $pelicula->getNombre_pelicula(); ?>">
+				<h2 id="nombre_pelicula" class="caja"><?php echo $pelicula->getNombre_pelicula();?></h2>
 			</div>
 
 			<div class="contenedor-descripcion">
-				<p id="titulo-descripcion">Descripción de la película:</p>
-				<textarea name="descripcion" class="descripcion"><?php echo $pelicula->getDescripcion();?></textarea>
+				<!--<p id="titulo-descripcion">Descripción de la película:</p>-->
+				<p class="descripcion vista"><?php echo $pelicula->getDescripcion();?></p>
 			</div>
 
 			<div class="duracion">
-				<label for="duracion">Duración:</label>
-				<input type="text" name="duracion" class="caja" value="<?php echo $pelicula->getDuracion();?>">
+				<label for="duracion"><b>Duración:</b><?php echo $pelicula->getDuracion();?> minutos</label>
 				<div class="categoria">
-					<label for="categoria">Categoria:</label>
-					<select name="categoria" id="categoria">
-						<option>Selecciona categoria</option>
-						<option value="Accion">Accion</option>
-						<option value="Aventura">Aventura</option>
-						<option value="Ciencia Ficcion">Ciencia Ficcion</option>
-						<option value="Terror">Terror</option>
-						<option value="Drama">Drama</option>
-						<option value="Comedia">Comedia</option>
-						<option value="Infantiles">Infantiles</option>
-						<option value="Otro">Otro</option>
-					</select>
+					<label><b>Categoria: </b><?php echo $pelicula->getCategoria();?></label>
 				</div>
 			</div>
 
 			<div class="actores">
-				<label for="actores">Actores:</label>
-				<input type="text" name="actores" class="caja" value="<?php echo $pelicula->getActores();?>">
+				<label><b>Actores:</b> <?php echo $pelicula->getActores();?></label>
 			</div>
 
-			<div class="boton-agregar">
-				<input type="submit" value="Reservar asientp" class="btn btn-success">
+			<div class="boton-reservar">
+				<input id="reservar-asiento" type="submit"  value="Reservar asiento" class="btn btn-success">
 			</div>
 			<div class="grupo-error" id="error-añadir">
 				<img class="icono-error" src="../img/error.svg" alt="error">
@@ -71,7 +55,6 @@
 	</form>
 
 	</div>
-    <script src="js/validaciones.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
