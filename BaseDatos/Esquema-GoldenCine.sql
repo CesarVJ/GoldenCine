@@ -29,7 +29,8 @@ CREATE TABLE Pelicula (
   actores         varchar(255), 
   calificacion    float NOT NULL, 
   portada         varchar(255) NOT NULL, 
-  categoria       varchar(30) NOT NULL, 
+  categoria       varchar(30) NOT NULL,
+  precio          float NOT NULL, 
   PRIMARY KEY (id_pelicula));
 CREATE TABLE Reservacion (
   id_reservacion      char(10) NOT NULL, 
@@ -44,8 +45,8 @@ CREATE TABLE Tarjeta (
   saldo             float NOT NULL, 
   id_cliente char(10) NOT NULL, 
   PRIMARY KEY (Numero_tarjeta));
-ALTER TABLE Tarjeta ADD CONSTRAINT FKTarjeta-cliente FOREIGN KEY (Clienteid_cliente) REFERENCES Cliente (id_cliente);
-ALTER TABLE Reservacion ADD CONSTRAINT FKReservacion-cliente FOREIGN KEY (Clienteid_cliente) REFERENCES Cliente (id_cliente);
-ALTER TABLE Reservacion ADD CONSTRAINT FKReservacion-pelicula FOREIGN KEY (Peliculaid_pelicula) REFERENCES Pelicula (id_pelicula);
-ALTER TABLE Horario ADD CONSTRAINT FKHorario-pelicula FOREIGN KEY (Peliculaid_pelicula) REFERENCES Pelicula (id_pelicula);
+ALTER TABLE Tarjeta ADD CONSTRAINT FKTarjeta_cliente FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente);
+ALTER TABLE Reservacion ADD CONSTRAINT FKReservacion_cliente FOREIGN KEY (id_cliente) REFERENCES Cliente (id_cliente);
+ALTER TABLE Reservacion ADD CONSTRAINT FKReservacion_pelicula FOREIGN KEY (id_pelicula) REFERENCES Pelicula (id_pelicula);
+ALTER TABLE Horario ADD CONSTRAINT FKHorario_pelicula FOREIGN KEY (id_pelicula) REFERENCES Pelicula (id_pelicula);
 
