@@ -42,20 +42,40 @@
 
 ![RegistrarseValidacion3](capturasAplicacion/Registrarse-validacion3.png)
 
-## Cartelera
+## Administrador
 
-### Administrador
+### Cartelera
 
 ![CarteleraAdmin](capturasAplicacion/CarteleraAdmin.png)
 
-### Cliente
+### Añadir Pelicula
 
-![CarteleraCliente](capturasAplicacion/CarteleraCliente.png)
+![AgregarPelicula](capturasAplicacion/AñadirPelicula.png)
 
-## Editar informacion de Pelicula
+### Editar informacion de Pelicula
 
 ![EditarPelicula](capturasAplicacion/EditarPelicula.png)
 
-## Eliminar Pelicula
+### Eliminar Pelicula
 
 ![EliminarPelicula](capturasAplicacion/EliminarPelicula.png)
+
+## Cliente
+
+### Cartelera
+
+![CarteleraCliente](capturasAplicacion/CarteleraCliente.png)
+
+### Ver informacion de Pelicula
+
+![InformacionPelicula](capturasAplicacion/InformacionPelicula.png)
+
+### Categorias
+
+![Categorias](capturasAplicacion/Categorias.png)
+
+## Invitado
+
+### Cartelera
+
+![CarteleraInvitado](capturasAplicacion/CarteleraInvitado.png)
