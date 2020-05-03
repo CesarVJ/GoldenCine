@@ -25,6 +25,10 @@ function validarInicio() {
     return bandera;
 }
 
+function esNumero(valor) {
+    return /^-{0,1}\d+$/.test(valor);
+}
+
 function validarRegistro() {
     var nombre = document.forms["form-registro"]["nombre"].value;
     var fecha_nacimiento = document.forms["form-registro"]["fecha_nacimiento"].value;
@@ -52,6 +56,13 @@ function validarRegistro() {
         mensajeError.innerHTML = "Las contraseñas no coinciden.";
         registro_error.style.display = "block";
         return false;
+    }
+    if (telefono != "") {
+        if (telefono.length != 10 || !esNumero(telefono)) {
+            mensajeError.innerHTML = "El telefono proporcionado no es valido";
+            registro_error.style.display = "block";
+            return false;
+        }
     }
     return true;
 }

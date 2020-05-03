@@ -49,7 +49,7 @@
 				 <!--Aqui se invoca el formulario de registro-->
 				<?php require_once("paginas/formularioRegistro.html")?>
 				<div class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">					
-					<form action="iniciarSesion.php" method="post"class="formulario" id="form-login" name="form-login" onsubmit="return validarInicio()">
+					<form action="iniciarSesion.php" method="post" class="formulario" id="form-login" name="form-login" onsubmit="return validarInicio()">
 						<div class="grupo-correo">
 							<p class="texto">Correo</p>
 							<img class="icono" src="img/usuario.svg" alt="usuario">
