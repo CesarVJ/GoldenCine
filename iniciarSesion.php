@@ -20,14 +20,12 @@
 			//Se valida que el campo de correno no este vacio
 			if(empty(trim($_POST["correo"]))){ 
 				$error_correo = "No se proporciono correo";
-				echo "<script type='text/javascript'>correoIncorrecto();</script>";				
 			}else{
 				$correo = trim($_POST["correo"]);
 			}
 			//Se valida que el campo de contraseña no este vacio
 			if(empty(trim($_POST["contraseña"]))){
 				$error_contraseña="No se proporciono contraseña";
-				echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";				
 			}else{
 				$contraseña = trim($_POST["contraseña"]);
 			}

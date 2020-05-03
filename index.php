@@ -8,8 +8,7 @@
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<script src="js/validaciones.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css?=<?php echo time();?>">
 </head>
 
 <body>
@@ -50,8 +49,7 @@
 				 <!--Aqui se invoca el formulario de registro-->
 				<?php require_once("paginas/formularioRegistro.html")?>
 				<div class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">					
-					<form action="iniciarSesion.php" method="post"
-						class="formulario">
+					<form action="iniciarSesion.php" method="post"class="formulario" id="form-login" name="form-login" onsubmit="return validarInicio()">
 						<div class="grupo-correo">
 							<p class="texto">Correo</p>
 							<img class="icono" src="img/usuario.svg" alt="usuario">
@@ -78,7 +76,7 @@
 		</div>
 	</div>
 
-
+	<script src="js/validaciones.js?=<?php echo time();?>"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
 		< script src = "https://code.jquery.com/jquery-3.4.1.slim.min.js" >
 	</script>
