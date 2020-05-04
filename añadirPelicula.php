@@ -40,7 +40,11 @@
                     $pelicula->setDescripcion(trim($_POST["descripcion"]));
                     $pelicula->setActores(trim($_POST["actores"]));
                     $pelicula->setPortada(basename($_FILES['portada']['name']));
-                    $pelicula->setCategoria(trim($_POST["categoria"]));
+                    if(trim($_POST["categoria"])=="Selecciona categoria"){
+                        $pelicula->setCategoria("Otro");
+                    }else{
+                        $pelicula->setCategoria(trim($_POST["categoria"]));
+                    }
                     $pelicula->setDuracion(trim($_POST["duracion"]));
                     $pelicula->setPrecio(trim($_POST["precio"]));
 
