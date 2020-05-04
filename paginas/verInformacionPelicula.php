@@ -17,7 +17,7 @@
 
 	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Informacion de película</h1>
-	<form id="form-verInformacionPelicula" action="?id=<?php echo $id_pelicula;?>" method="post" name="form-verInformacionPelicula">
+	<form id="form-verInformacionPelicula" action="ReservarAsientos.php?id=<?php echo $id_pelicula;?>" method="post" name="form-verInformacionPelicula">
 		<div class="margen visual">
 
 			<div id="portada-vista" class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
