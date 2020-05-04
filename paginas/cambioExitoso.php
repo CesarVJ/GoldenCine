@@ -13,24 +13,36 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
 	}
 	
 	if(empty($nomb_err)){
-		$param_nombre_pelicula = $_POST['titulo'];
+		$param_nombre_pelicula = trim($_POST['titulo']);
 		$param_calificacion =   $calificacion;
-		$param_descripcion =  $_POST['descripcion'];
-		$param_actores =  $_POST['actores'];
-		$param_categoria =  $_POST['categoria'];
+		$param_descripcion =  trim($_POST['descripcion']);
+		$param_actores =  trim($_POST['actores']);
+		$param_categoria =  trim($_POST['categoria']);
 		$param_portada =   basename($_FILES['portada']['name']);
 		$param_duracion =   $_POST['duracion'];
 		$param_precio =   $_POST['precio'];
 
 		$respuesta = null;
 
-		if($portada == null){
-			$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $param_categoria,  $portada, $param_duracion, $param_precio);
-		}else if($categoria == null){
-			$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $categoria, $param_portada, $param_duracion, $param_precio);
-		}else{
-			$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $param_categoria,  $param_portada, $param_duracion, $param_precio);
+
+
+
+		if($param_portada == null){
+			$param_portada = null;
+			#$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $param_categoria,  $portada, $param_duracion, $param_precio);
 		}
+		if($param_categoria == "Selecciona categoria"){
+			$param_categoria= $categoria;
+			#$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $categoria, $param_portada, $param_duracion, $param_precio);
+		}
+			#$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $param_categoria,  $param_portada, $param_duracion, $param_precio);
+		
+		$respuesta = $administrador->modificarInfoPelicula($conexion,$id_pelicula,$param_nombre_pelicula, $param_calificacion, $param_descripcion, $param_actores, $param_categoria,  $param_portada, $param_duracion, $param_precio);
+
+
+
+
+
 	}
 }
 

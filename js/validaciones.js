@@ -92,18 +92,20 @@ function validarAñadirPelicula() {
 
 
 function validarModificarPelicula() {
-    var titulo = document.forms["form-añadirPelicula"]["titulo"].value;
-    var portada = document.forms["form-añadirPelicula"]["portada"].value;
-    var descripcion = document.forms["form-añadirPelicula"]["descripcion"].value;
-    var duracion = document.forms["form-añadirPelicula"]["duracion"].value;
-    var actores = document.forms["form-añadirPelicula"]["actores"].value;
-    var categoria = document.forms["form-añadirPelicula"]["categoria"].value;
+    var titulo = document.forms["form-editarInformacionPelicula"]["titulo"].value;
+    var portada = document.forms["form-editarInformacionPelicula"]["portada"].value;
+    var descripcion = document.forms["form-editarInformacionPelicula"]["descripcion"].value;
+    var duracion = document.forms["form-editarInformacionPelicula"]["duracion"].value;
+    var actores = document.forms["form-editarInformacionPelicula"]["actores"].value;
+    var categoria = document.forms["form-editarInformacionPelicula"]["categoria"].value;
+    var precio = document.forms["form-editarInformacionPelicula"]["precio"].value;
+
 
     let mensajeError = document.querySelector("#mensaje-error-añadirPelicula");
     let error_añadir = document.querySelector("#error-añadir");
 
 
-    if (titulo == "" || descripcion == "" || duracion == "" || actores == "") {
+    if (titulo == "" || descripcion == "" || duracion == "" || actores == "" || precio == "" || precio == 0) {
         mensajeError.innerHTML = "Por favor, proporcione todos los datos solicitados";
         error_añadir.style.display = "block";
         return false;

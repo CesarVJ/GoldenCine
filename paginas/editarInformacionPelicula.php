@@ -38,7 +38,7 @@
 
 			<div class="duracion">
 				<label for="duracion">Duración:</label>
-				<input type="text" name="duracion" class="caja" value="<?php echo $pelicula->getDuracion();?>">
+				<input type="number" name="duracion" class="caja" value="<?php echo $pelicula->getDuracion();?>">
 				<div class="categoria">
 					<label for="categoria">Categoria:</label>
 					<select name="categoria" id="categoria">
@@ -97,7 +97,7 @@
 	</form>
 
 	</div>
-    <script src="js/validaciones.js"></script>
+    <script src="js/validaciones.js?=<?php echo time();?>"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
