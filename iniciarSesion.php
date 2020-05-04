@@ -59,11 +59,15 @@
                                         header("location: paginas/carteleraCliente.php");
                                     }
 								}else{ // Las contraseñas no coinciden
-									echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";				
+									echo "Contraseña incorrecta";
+									header("location: index.php?error=2");
+									#echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";				
 								}
 							}
 						}else{ // EL usuario no existe
-							echo "<script type='text/javascript'>correoIncorrecto();</script>";				
+							echo "El usuario no existe, sera redireccionado al inicio";
+							header("location: index.php?error=1");
+							#echo "<script type='text/javascript'>correoIncorrecto();</script>";				
 						}
 					}else{
 						echo "Algo a salido mal! :c";

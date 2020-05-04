@@ -87,3 +87,16 @@
 </body>
 
 </html>
+
+<?php
+		if (isset($_GET['error'])){
+			echo "Algo ocurrio";
+
+			if($_GET['error'] == 1){
+				echo "<script type='text/javascript'>correoIncorrecto();</script>";
+			}else if($_GET['error'] == 2){
+				echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";
+			}
+		}
+
+?>

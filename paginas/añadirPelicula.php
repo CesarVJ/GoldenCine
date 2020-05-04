@@ -35,7 +35,7 @@
 
 			<div class="duracion">
 				<label for="duracion">Duración:</label>
-				<input type="text" name="duracion" class="caja">
+				<input type="number" name="duracion" class="caja">
 				<div class="categoria">
 					<label for="categoria">Categoria:</label>
 					<select name="categoria" id="categoria">
