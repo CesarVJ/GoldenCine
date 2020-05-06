@@ -10,6 +10,8 @@
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/carteleras.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../css/fontello.css">
+	<link rel="stylesheet" type="text/css" href="../css/calificar.css?v=<?php echo time(); ?>">
+
 </head>
 
 <body>
@@ -64,11 +66,11 @@
 					<div class="modal-body">
 						¿Que tal te parecio esta pelicula? <br>
 						<div class="estrellas">
-							<a href="#" data-value="1" title="1 estrella">&#9733;</a>
-							<a href="#" data-value="2" title="2 estrellas">&#9733;</a>
-							<a href="#" data-value="3" title="3 estrellas">&#9733;</a>
-							<a href="#" data-value="4" title="4 estrellas">&#9733;</a>
-							<a href="#" data-value="5" title="5 estrellas">&#9733;</a>
+							<a id="uno" href="#" data-value="1" title="1 estrella" class="unchecked">&#9733;</a>
+							<a id="dos" href="#" data-value="2" title="2 estrellas" class="unchecked">&#9733;</a>
+							<a id="tres" href="#" data-value="3" title="3 estrellas" class="unchecked">&#9733;</a>
+							<a id="cuatro" href="#" data-value="4" title="4 estrellas" class="unchecked">&#9733;</a>
+							<a id="cinco" href="#" data-value="5" title="5 estrellas" class="unchecked">&#9733;</a>
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
@@ -83,6 +85,7 @@
 		}
 	?>
 	</div>
+	<script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>

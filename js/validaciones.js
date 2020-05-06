@@ -112,3 +112,16 @@ function validarModificarPelicula() {
     }
     return true;
 }
+var estrellas = ["uno", "dos", "tres", "cuatro", "cinco"];
+estrellas.forEach(function (elemento) {
+    document.getElementById(elemento).addEventListener("click", function () {
+        var cls = document.getElementById(elemento).className;
+        if (cls.includes("unchecked")) {
+            document.getElementById(elemento).classList.remove("unchecked");
+            document.getElementById(elemento).classList.add("checked");
+        } else {
+            document.getElementById(elemento).classList.remove("checked");
+            document.getElementById(elemento).classList.add("unchecked");
+        }
+    });
+});
