@@ -66,11 +66,12 @@
 					<div class="modal-body">
 						¿Que tal te parecio esta pelicula? <br>
 						<div class="estrellas">
-							<a id="uno" href="#" data-value="1" title="1 estrella" class="unchecked">&#9733;</a>
-							<a id="dos" href="#" data-value="2" title="2 estrellas" class="unchecked">&#9733;</a>
-							<a id="tres" href="#" data-value="3" title="3 estrellas" class="unchecked">&#9733;</a>
-							<a id="cuatro" href="#" data-value="4" title="4 estrellas" class="unchecked">&#9733;</a>
-							<a id="cinco" href="#" data-value="5" title="5 estrellas" class="unchecked">&#9733;</a>
+							<a class="uno unchecked" href="#" data-value="1" title="1 estrella">&#9733;</a>
+							<a class="dos unchecked" href="#" data-value="2" title="2 estrellas">&#9733;</a>
+							<a class="tres unchecked" href="#" data-value="3" title="3 estrellas">&#9733;</a>
+							<a class="cuatro unchecked" href="#" data-value="4" title="4 estrellas">&#9733;</a>
+							<a class="cinco unchecked" href="#" data-value="5" title="5 estrellas">&#9733;</a>
+							<input class="estrella-actual" type="text">
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
@@ -85,7 +86,8 @@
 		}
 	?>
 	</div>
-	<script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>
@@ -95,6 +97,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 	</script>
+	<script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>

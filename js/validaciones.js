@@ -112,16 +112,53 @@ function validarModificarPelicula() {
     }
     return true;
 }
+
+function pintarAnteriores(estrellaActual) {
+    switch (estrellaActual) {
+        case "cinco":
+            $('.cuatro').addClass("checked");
+        case "cuatro":
+            $('.tres').addClass("checked");
+        case "tres":
+            $('.dos').addClass("checked");
+        case "dos":
+            $('.uno').addClass("checked");
+            break;
+    }
+}
+
+function despintarEstrellas(estrellaActual) {
+    switch (estrellaActual) {
+        case "uno":
+            $('.dos').removeClass("checked");
+            $('.dos').addClass("unchecked");
+        case "dos":
+            $('.tres').removeClass("checked");
+            $('.tres').addClass("unchecked");
+        case "tres":
+            $('.cuatro').removeClass("checked");
+            $('.cuatro').addClass("unchecked");
+        case "cuatro":
+            $('.cinco').removeClass("checked");
+            $('.cinco').addClass("unchecked");
+            break;
+    }
+}
+
 var estrellas = ["uno", "dos", "tres", "cuatro", "cinco"];
 estrellas.forEach(function (elemento) {
-    document.getElementById(elemento).addEventListener("click", function () {
-        var cls = document.getElementById(elemento).className;
-        if (cls.includes("unchecked")) {
-            document.getElementById(elemento).classList.remove("unchecked");
-            document.getElementById(elemento).classList.add("checked");
+    $('.' + elemento).click(function () {
+        var cls = $('.' + elemento);
+        if (cls.hasClass("unchecked")) {
+            $('.' + elemento).removeClass("unchecked");
+            $('.' + elemento).addClass("checked");
         } else {
-            document.getElementById(elemento).classList.remove("checked");
-            document.getElementById(elemento).classList.add("unchecked");
+            $('.' + elemento).removeClass("checked");
+            $('.' + elemento).addClass("unchecked");
         }
+        var ultimaEstrella = $('.' + elemento).attr("data-value");
+        $('.estrella-actual').val(ultimaEstrella);
+        pintarAnteriores(elemento);
+        despintarEstrellas(elemento);
     });
 });
