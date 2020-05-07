@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-pago {
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial;
+    border: 2px solid black;
+    display: grid;
+    grid-template-areas: "titulo titulo"
+        "nombre-titular numero-tarjeta"
+        "fecha-expiracion codigo-seguridad";
+    grid-area: comprar-boleto;
+}
+
+#titulo {
+    background: skyblue;
+    height: 70px;
+    margin-top: 0;
+    grid-area: titulo;
+}
+
+.nombre-titular {
+    grid-area: nombre-titular;
+}
+
+.numero-tarjeta {
+    grid-area: numero-tarjeta;
+}
+
+.fecha-expiracion {
+    grid-area: fecha-expiracion;
+}
+
+.codigo-seguridad {
+    grid-area: codigo-seguridad;
+}
+
+.texto {
+    font-size: 20px;
+    border-radius: 5%;
+}
+
+.mostrar-pago {
+    grid-area: mostrar-boleto;
+}
+
+.contenedor-general {
+    display: grid;
+    grid-template-areas: "comprar-boleto mostrar-boleto";
+    margin-top: 3rem;
+}
+
+#codigo-seguridad {
+    width: 30%;
+}
+
+#btn-regresar {
+    margin-top: 4rem;
+}
