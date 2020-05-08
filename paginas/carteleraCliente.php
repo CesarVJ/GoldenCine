@@ -63,22 +63,22 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+					<form action="../calificarPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>" method="post">
 					<div class="modal-body">
-						¿Que tal te parecio esta pelicula? <br>
+					¿Que tal te parecio esta pelicula? <br>
 						<div class="estrellas">
 							<a class="uno unchecked" href="#" data-value="1" title="1 estrella">&#9733;</a>
 							<a class="dos unchecked" href="#" data-value="2" title="2 estrellas">&#9733;</a>
 							<a class="tres unchecked" href="#" data-value="3" title="3 estrellas">&#9733;</a>
 							<a class="cuatro unchecked" href="#" data-value="4" title="4 estrellas">&#9733;</a>
 							<a class="cinco unchecked" href="#" data-value="5" title="5 estrellas">&#9733;</a>
-							<input class="estrella-actual" type="text">
+							<input class="estrella-actual" name="estrella-actual" type="text" value="">
 						</div>
 					</div>
 					<div class="modal-footer" style="text-align:center;">
-						<button style="margin: 0 auto;" type="button" class="btn btn-success"><a class="btn-calificar"
-								href="../calificarPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>"
-								style="text-decoration:none; color:#fff;">Calificar</a></button>
-					</div>
+						<input style="margin: 0 auto;" type="submit" class="btn btn-success" value="Calificar">
+					</div>												
+					</form>
 				</div>
 			</div>
 		</div>

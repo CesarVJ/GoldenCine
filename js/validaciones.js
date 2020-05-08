@@ -157,7 +157,7 @@ estrellas.forEach(function (elemento) {
             $('.' + elemento).addClass("unchecked");
         }
         var ultimaEstrella = $('.' + elemento).attr("data-value");
-        $('.estrella-actual').val(ultimaEstrella);
+        $('.estrella-actual').attr('value', ultimaEstrella);
         pintarAnteriores(elemento);
         despintarEstrellas(elemento);
     });
