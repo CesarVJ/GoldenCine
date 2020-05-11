@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>GoldenCine</title>
 	<meta charset="utf-8">
@@ -10,7 +9,6 @@
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css?=<?php echo time();?>">
 </head>
-
 <body>
 	<?php
 	session_start();
@@ -44,12 +42,12 @@
 			</li>
 		</ul>
 		<div class="contenedor">
-
 			<div class="tab-content" id="myTabContent">
-				 <!--Aqui se invoca el formulario de registro-->
+				<!--Aqui se invoca el formulario de registro-->
 				<?php require_once("paginas/formularioRegistro.html")?>
-				<div class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">					
-					<form action="iniciarSesion.php" method="post" class="formulario" id="form-login" name="form-login" onsubmit="return validarInicio()">
+				<div class="tab-pane fade show active" id="iniciar-sesion" aria-labelledby="iniciar-sesion-tab">
+					<form action="iniciarSesion.php" method="post" class="formulario" id="form-login" name="form-login"
+						onsubmit="return validarInicio()">
 						<div class="grupo-correo">
 							<p class="texto">Correo</p>
 							<img class="icono" src="img/usuario.svg" alt="usuario">
@@ -75,7 +73,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="js/validaciones.js?=<?php echo time();?>"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js">
 		< script src = "https://code.jquery.com/jquery-3.4.1.slim.min.js" >
@@ -85,18 +82,14 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 	</script>
 </body>
-
 </html>
-
 <?php
-		if (isset($_GET['error'])){
-			echo "Algo ocurrio";
-
-			if($_GET['error'] == 1){
-				echo "<script type='text/javascript'>correoIncorrecto();</script>";
-			}else if($_GET['error'] == 2){
-				echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";
-			}
+	if (isset($_GET['error'])){
+		echo "Algo ocurrio";
+		if($_GET['error'] == 1){
+			echo "<script type='text/javascript'>correoIncorrecto();</script>";
+		}else if($_GET['error'] == 2){
+			echo "<script type='text/javascript'>contraseñaIncorrecta();</script>";
 		}
-
+	}
 ?>

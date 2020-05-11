@@ -10,6 +10,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/carteleras.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../css/editarPelicula.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../css/calificar.css?v=<?php echo time(); ?>">
+
 	<script src="../js/validaciones.js"></script>
 </head>
 
@@ -18,8 +20,16 @@
 	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Informacion de película</h1>
 	<form id="form-verInformacionPelicula" action="ReservarAsientos.php?id=<?php echo $id_pelicula;?>" method="post" name="form-verInformacionPelicula">
+	
 		<div class="margen visual">
-
+		<div class="estrellas-caja" style="text-align:center;">
+							Calificación: <?php echo $pelicula->getCalificacion();?> <br>
+							<a class="uno unchecked" data-value="1" title="1 estrella">&#9733;</a>
+							<a class="dos unchecked" data-value="2" title="2 estrellas">&#9733;</a>
+							<a class="tres unchecked" data-value="3" title="3 estrellas">&#9733;</a>
+							<a class="cuatro unchecked" data-value="4" title="4 estrellas">&#9733;</a>
+							<a class="cinco unchecked" data-value="5" title="5 estrellas">&#9733;</a>
+		</div>
 			<div id="portada-vista" class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
 			</div>
 

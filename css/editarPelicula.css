@@ -7,7 +7,7 @@
   padding: 20px;
   display: grid;
   grid-template-areas:
-    "portada titulo titulo"
+    "estrellas titulo titulo"
     "portada descripcion descripcion"
     "duracion actores boton";
   grid-gap: 15px;
@@ -53,6 +53,9 @@
 }
 
 
+.estrellas-caja {
+  grid-area: estrellas;
+}
 
 .titulo {
   grid-area: titulo;

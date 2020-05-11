@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Administrador</title>
+	<title>Cliente</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="viewport"
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -13,18 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="../css/calificar.css?v=<?php echo time(); ?>">
 
 </head>
-
 <body>
-
 	<?php require_once("../Menu.php") ?>
 	<h1 id="fecha">Cartelera Febrero 2020</h1>
 	<div class="contenedor">
 		<?php
 		require('../conexion.php');
 		require('../modelo/Pelicula.php');
-
 		$pelicula = new Pelicula();
-
 		$conexion = abrirConexion();
 		$consultaPeliculas="";
         if (isset($_GET['categoria'])){
@@ -37,12 +32,10 @@
 			$consultaPeliculas = "select * from pelicula";
         }
 		$listaPeliculas = $conexion -> query($consultaPeliculas);
-		
+
 		while($row = $listaPeliculas->fetch_assoc()){
 			$pelicula->setPortada($row["portada"]);
 			$pelicula->setId_pelicula($row["id_pelicula"]);
-
-			//echo "id: " . $row["id_pelicula"]. "Nombre: " . $row["nombre_pelicula"]. "Descripcion: ". $row["descripcion"]."<br>";
 	?>
 		<div class="contenedor-pelicula-cliente">
 			<a href="verInformacionPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>">
@@ -99,5 +92,4 @@
 	</script>
 	<script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
 </body>
-
 </html>
