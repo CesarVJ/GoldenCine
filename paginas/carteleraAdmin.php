@@ -50,7 +50,7 @@
 			<a href="editarInformacionPelicula.php?id=<?php echo $pelicula->getId_pelicula();?>">
 				<img src="<?php echo "../img/portadas/".$pelicula->getPortada(); ?>" class="portada">
 			</a>
-			<button class="boton" id="btn-agregar"> <a id="agregar-horario" href="agregarHorarios.php"> Agregar
+			<button class="boton" id="btn-agregar"> <a id="agregar-horario" href="agregarHorarios.php?id=<?php echo $pelicula->getId_pelicula();?>"> Agregar
 					horario</a></button>
 			<button class="boton btn btn-danger" id="btn-eliminar" type="button" data-toggle="modal"
 				data-target="#mensaje-eliminar<?php echo $pelicula->getId_pelicula();?>">Eliminar</button>

@@ -1,3 +1,4 @@
+<?php require_once("../modelo/ConsultaPeliculasCartelera.php")?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,18 +6,25 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/carteleras.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../css/agregarHorarios.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../css/editarPelicula.css?v=<?php echo time(); ?>">
+
 </head>
 <body>
 
 <?php require_once("../Menu.php") ?>
+<?php
+require '../modelo/Horario.php';
+
+$horarios = new Horario();
+$horarios= $horarios->getHorarios($pelicula->getId_pelicula());
+?>
 
 	<h1 id="fecha">Agregar horarios</h1>
 
 	<div class="contenedor-agregar-horarios">
-		<h1 id="titulo">Titulo de la película</h1>
-		<div class="inserta-portada">
-			<span>Inserta portada</span>
-		</div>
+		<h1 id="titulo"><?php echo $pelicula->getNombre_pelicula();?></h1>
+		<div id="portada-vista" class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
+			</div>
 
 		<div class="formacion-horario">
 			<form action="" method="">
@@ -26,11 +34,7 @@
 			</div>
 			<div id="hora">
 				<label for="hora-pelicula">Hora:</label>
-				<input type="text" name="hora-pelicula">
-				<select size="1">
-					<option>AM</option>
-					<option>PM</option>
-				</select>
+				<input type="time" name="hora-pelicula">
 			</div>
 			<div id="sala">
 				<label for="sala-pelicula">Sala:</label>
@@ -46,6 +50,13 @@
 	    		<center>
 	    			<h4>Horarios agregados</h4>
 	    	    </center>
+				<ul>
+				<?php
+				    foreach ($horarios as $listaHorarios){ ?>
+					<li><?php echo $listaHorarios->getDia(); echo $listaHorarios->getHora();?> Sala <?php echo $listaHorarios->getSala();?> </li>
+
+			<?php }	?>
+				</ul>
 	    		<ul>
 	    			<li>Horario #<span class="basura"></span></li>
 	    		</ul>

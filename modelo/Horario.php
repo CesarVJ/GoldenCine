@@ -6,6 +6,27 @@ class Horario{
     private $sala = "";
 
 
+
+	public function getHorarios($idPelicula){
+		$conexion = abrirConexion();
+		$listaHorarios = array();
+		$consultaHorarios = "select * from Horario where Peliculaid_pelicula = '".$idPelicula."'";
+		$datos = $conexion -> query($consultaHorarios);
+
+		if($datos->num_rows > 0){
+			$contador=0;
+			while($row = $datos->fetch_assoc()){
+				$listaHorarios[$contador] = new Horario();
+				$listaHorarios[$contador]->setId_horario($row['id_horario']);
+				$listaHorarios[$contador]->setDia($row['dia']);
+				$listaHorarios[$contador]->setHora($row['hora']);
+				$listaHorarios[$contador]->setSala($row['sala']);
+				$contador+=1;
+			}
+		}
+		return $listaHorarios;
+	}
+
     # Metodos accesores
     public function getId_horario(){
 		return $this->id_horario;
