@@ -30,7 +30,7 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 		</div>
 
 		<div class="formacion-horario">
-			<form id="form-horario" name="form-horario" action="../agregarHorario.php?id=<?php echo $pelicula->getId_pelicula();?>" method="post" onsubmit="return verificarHorario()">
+			<form id="form-horario" name="form-horario" action="../agregarHorario.php?id=<?php echo $pelicula->getId_pelicula();?>" method="post" onsubmit="return verificarHorario('Por favor, proporcione todos los datos solicitados')">
 				<div id="dia">
 					<label for="dia-pelicula">Día:</label>
 					<input type="date" name="dia-pelicula">
@@ -89,7 +89,7 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 <?php
 	if (isset($_GET['error'])){
 		if($_GET['error'] == 1){
-			echo "<script type='text/javascript'>verificarHorario();</script>";
+			echo "<script type='text/javascript'>verificarHorario('Ya existe una funcion en dicho horario');</script>";
 		}
 	}
 ?>

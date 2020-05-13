@@ -187,7 +187,7 @@ estrellas.forEach(function (elemento) {
   });
 });
 
-function verificarHorario() {
+function verificarHorario(mensaje) {
   var dia = document.forms["form-horario"]["dia-pelicula"].value;
   var hora = document.forms["form-horario"]["hora-pelicula"].value;
   var sala = document.forms["form-horario"]["sala-pelicula"].value;
@@ -196,8 +196,7 @@ function verificarHorario() {
   let error_añadir = document.querySelector("#error-horario");
 
   if (dia == "" || hora == "" || sala == "") {
-    mensajeError.innerHTML =
-      "Por favor, proporcione todos los datos solicitados";
+    mensajeError.innerHTML = mensaje;
     error_añadir.style.display = "block";
     return false;
   }
