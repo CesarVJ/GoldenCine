@@ -30,7 +30,7 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 		</div>
 
 		<div class="formacion-horario">
-			<form action="../agregarHorario.php?id=<?php echo $pelicula->getId_pelicula();?>" method="post">
+			<form id="form-horario" name="form-horario" action="../agregarHorario.php?id=<?php echo $pelicula->getId_pelicula();?>" method="post" onsubmit="return verificarHorario()">
 				<div id="dia">
 					<label for="dia-pelicula">Día:</label>
 					<input type="date" name="dia-pelicula">
@@ -44,6 +44,11 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 					<input type="number" name="sala-pelicula">
 				</div>
 				<center><input type="submit" name="enviar" class="btn btn-success btn-lg" value="Agregar horario"></center>
+				<div class="grupo-error" id="error-horario">
+				<img class="icono-error" src="../img/error.svg" alt="error">
+				<p class="mensaje-error" id="mensaje-error-horario">
+				</p>
+			</div>
 			</form>
 		</div>
 
@@ -62,9 +67,11 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 					<?php }	?>
 				</ul>
 			</div>
-			<center><button class="btn btn-outline-primary btn-lg btn-block" style="margin-top:1rem;">Regresar</button></center>
+			<center> <a href="carteleraAdmin.php"> <button class="btn btn-outline-primary btn-lg btn-block" style="margin-top:1rem;">Regresar</button></a></center>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>
@@ -74,7 +81,15 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 	</script>
-
+		<script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>
+
+<?php
+	if (isset($_GET['error'])){
+		if($_GET['error'] == 1){
+			echo "<script type='text/javascript'>verificarHorario();</script>";
+		}
+	}
+?>

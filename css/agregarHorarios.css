@@ -79,3 +79,26 @@
 .contenedor-agregados ul li {
 	font-weight: bold;
 }
+
+/*Mensaje de error*/
+.grupo-error {
+	text-align: left;
+	margin: 1px 25px;
+}
+
+#mensaje-error-horario {
+	color: red;
+	display: inline-block;
+	font-size: 0.7rem;
+
+}
+
+.icono-error {
+	filter: invert(27%) sepia(51%) saturate(2878%) contrast(97%);
+	float: left;
+
+}
+
+#error-horario {
+	display: none;
+}

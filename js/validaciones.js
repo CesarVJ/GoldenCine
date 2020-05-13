@@ -186,3 +186,20 @@ estrellas.forEach(function (elemento) {
     despintarEstrellas(elemento);
   });
 });
+
+function verificarHorario() {
+  var dia = document.forms["form-horario"]["dia-pelicula"].value;
+  var hora = document.forms["form-horario"]["hora-pelicula"].value;
+  var sala = document.forms["form-horario"]["sala-pelicula"].value;
+
+  let mensajeError = document.querySelector("#mensaje-error-horario");
+  let error_añadir = document.querySelector("#error-horario");
+
+  if (dia == "" || hora == "" || sala == "") {
+    mensajeError.innerHTML =
+      "Por favor, proporcione todos los datos solicitados";
+    error_añadir.style.display = "block";
+    return false;
+  }
+  return true;
+}

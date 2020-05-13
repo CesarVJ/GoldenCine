@@ -10,7 +10,7 @@ if(isset($_GET["id"])){
             $mismosHorarios = "select * from Horario where dia = '".trim($_POST["dia-pelicula"])."'  and hora = '".trim($_POST["hora-pelicula"])."' and sala = '".trim($_POST["sala-pelicula"])."'";
             $resultado = $conexion -> query($mismosHorarios);
             if($resultado->num_rows > 0){
-                header('location: paginas/agregarHorarios.php?error=1');
+                header('location: paginas/agregarHorarios.php?id='.$_GET["id"].'&error=1');
             }else{
                 $horarioNuevo = new Horario();
                 $horarios = "select id_horario from Horario";
