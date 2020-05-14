@@ -202,3 +202,14 @@ function verificarHorario(mensaje) {
   }
   return true;
 }
+
+
+$(".asiento").click(function () {
+  if ($(this).hasClass("unchecked")) {
+    $(this).removeClass("unchecked");
+    $(this).addClass("checked");
+  } else {
+    $(this).removeClass("checked");
+    $(this).addClass("unchecked");
+  }
+});

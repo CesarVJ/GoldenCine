@@ -19,6 +19,23 @@ class Reservacion{
 		$this->asientos = $asientos;
 	}
 
+	function getAsientosOcupados($id_horario){
+		$conexion = abrirConexion();
+		$listaAsientos = array();
+		$consultaAsientos = "select asientos from Reservacion where Horarioid_horario = '".$id_horario."'";
+		$datos = $conexion -> query($consultaAsientos);
+
+		if($datos->num_rows > 0){
+			$contador=0;
+			while($row = $datos->fetch_assoc()){
+				$listaAsientos[$contador] = new Reservacion();
+				$listaAsientos[$contador]->setAsientos($row['asientos']);
+				$contador+=1;
+			}
+		}
+		return $listaAsientos;
+	}
+
     
 
 }
