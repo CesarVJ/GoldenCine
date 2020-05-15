@@ -1,3 +1,21 @@
+<?php
+    if(!empty(trim($_POST["Asientos-seleccionados"])) & !empty(trim($_POST['primer-horario'])) && !empty(trim($_POST['precio-total']))){
+		$asientosSeleccionados=trim($_POST["Asientos-seleccionados"]);
+		$horarioElegido =trim($_POST['primer-horario']);
+		$precioTotal = trim($_POST['precio-total']);
+
+
+		require '../conexion.php';
+		$conexion=abrirConexion();
+		$datosHorario= ejecutarConsulta("SELECT dia, hora, sala from Horario where id_horario = '". $horarioElegido."';",$conexion);
+
+
+	}else{
+		header("location:javascript://history.go(-1)");
+	}
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -43,13 +61,18 @@
 			</div>
 
 			<div class="mostrar-pago">
-				<h1>Total a pagar: <span id="total-pagar">$</span></h1>
-                <h1>Usted ha seleccionado: <span id="cantidad"></span></h1>
-                <h3> # Boletos en horario :</h3>
+				<h1>Total a pagar: <span id="total-pagar"> <?php echo $precioTotal;?></span></h1>
+                <h1>Usted ha seleccionado<span id="cantidad"></span></h1>
+				<h2>Los asientos: <?php echo $asientosSeleccionados; ?></h2>
+                <h3>Boletos en horario de <?php echo $datosHorario[0][1]; ?> </h3>
+				<h3>el día <?php echo $datosHorario[0][0]; ?> </h3>
+                <h3>en la sala <?php echo $datosHorario[0][2]; ?> </h3>
+
+
                 
 
 
-				<button id="btn-regresar" class="btn btn-outline-danger btn-lg btn-block">Regresar</button>
+			 <a href="#" onclick="window.history.go(-1); return false;"><button id="btn-regresar" class="btn btn-outline-danger btn-lg btn-block">Regresar</button></a>
 				<button id="btn-comprar" class="btn btn-success btn-lg btn-block">Comprar Boleto(s)</button>
 			</div>
 		</div>

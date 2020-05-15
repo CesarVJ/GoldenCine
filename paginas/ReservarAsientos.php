@@ -32,6 +32,7 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 
 ?>
 	<h1 id="fecha">GoldenCine</h1>
+	<h3 style="margin-left:3rem;">Selecciona un horario para mostrar asientos disponibles</h3>
 	<div class="datos" style="display:none;">
 		<label id="id_pelicula"><?php echo $pelicula->getId_pelicula(); ?></label>
 		<label id="id_hora"><?php echo $_GET['horario']; ?></label>
@@ -41,6 +42,7 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 			<label id="Asientos<?php echo $contador;?>"><?php echo $asiento->getAsientos();?></label>
 		<?php }	?>
 		<label id="numReservaciones"><?php echo $contador;?></label>
+		<!--<div id="Asientos-seleccionados"></div>-->
 	</div>
 
 
@@ -48,10 +50,11 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 
 		<div class="contenedor-superior">
 			<h3 id="primero">Selecciona tu asiento</h3>
-			<h3 id="segundo">Total a pagar: <span id="precio-total">0</span>$ </h3>
+			<h3 id="segundo">Total a pagar: <input id="precio-total" name="precio-total" value="0" readonly ></h3>
 		</div>
-		<div class="contenedor-asientos">
+		<input typo="text" id="Asientos-seleccionados" name="Asientos-seleccionados" style="display:none;">
 
+		<div class="contenedor-asientos">
 			<?php 
 				$filas = Array("A", "B", "C", "D");
 				
@@ -65,16 +68,26 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 		</div>
 
 		<script>
+				function eliminarSubcadena(cadena, subcadena){
+					return cadena.replace(subcadena, '');
+				}
+
+			var asientosSeleccionados ="";	
 			$(".asiento").click(function () {
 				var precio = <?php echo $pelicula->getPrecio(); ?>;
 				if ($(this).hasClass("unchecked")) {
-					document.getElementById("precio-total").innerHTML=parseFloat(document.getElementById("precio-total").innerHTML) + parseFloat(precio);
-
+					$("#precio-total").attr("value",(parseFloat($("#precio-total").val()) + parseFloat(precio)+"$"));
+					$("#Asientos-seleccionados").attr("value",""+$("#Asientos-seleccionados").val() +","+ $(this).attr('id'));
+					//$( "#Asientos-seleccionados" ).append('<input value="'+$(this).attr('id')+'" id="'+$(this).attr('id')+'ocupado">'+$(this).attr('id')+'</label>');
 				}else{
-					document.getElementById("precio-total").innerHTML=parseFloat(document.getElementById("precio-total").innerHTML) - parseFloat(precio);
+					$("#precio-total").attr("value",parseFloat($("#precio-total").val()) - parseFloat(precio)+"$");
+					$("#Asientos-seleccionados").attr("value",eliminarSubcadena($("#Asientos-seleccionados").val(), ","+$(this).attr('id')));
+					//$("#"+$(this).attr('id')+"ocupado").remove();
+
 				}
 			}); 
-			
+
+					
 			function seleccionarHorario(horario_id){
 				idPeli=document.querySelector('#id_pelicula').innerHTML;
 				window.location="ReservarAsientos.php?id="+idPeli+"&horario="+horario_id;
@@ -88,10 +101,11 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 			<br>
 			<div class="contenedor-horarios">
 			<?php
-				    foreach ($horarios as $listaHorarios){ ?>
-			<center><input id="<?php echo $listaHorarios->getId_horario();?>" type="radio" name="primer-horario" onchange='seleccionarHorario("<?php echo $listaHorarios->getId_horario();?>");'>
+					$conta=0;
+				    foreach ($horarios as $listaHorarios){ ?>					
+			<center><input id="<?php echo $listaHorarios->getId_horario();?>"  value="<?php echo $listaHorarios->getId_horario();?>"  type="radio" name="primer-horario" onchange='seleccionarHorario("<?php echo $listaHorarios->getId_horario();?>");' >
 				<label for="primer-horario"> <b>Sala <?php echo $listaHorarios->getSala();?> / Dia:</b>    <?php echo $listaHorarios->getDia();?> <b> / Hora:   <?php echo $listaHorarios->getHora();?></b></label></center><br>
-			<?php }	?>
+			<?php $conta++; }	?>
 			</div>
 			<center><input type="submit" class="boton" value="Proceder al pago"></center>
 		</div>
@@ -111,6 +125,7 @@ $horarios= $horarios->getHorarios($pelicula->getId_pelicula());
 				}
 			}
 		</script>
+		
 
 
 </form>
