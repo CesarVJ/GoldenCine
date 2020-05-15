@@ -4,7 +4,6 @@
 		$horarioElegido =trim($_POST['primer-horario']);
 		$precioTotal = trim($_POST['precio-total']);
 
-
 		require '../conexion.php';
 		$conexion=abrirConexion();
 		$datosHorario= ejecutarConsulta("SELECT dia, hora, sala from Horario where id_horario = '". $horarioElegido."';",$conexion);
@@ -35,7 +34,7 @@
 <body>
 
     <?php require_once("../Menu.php") ?>
-    <div class="contenedor-general container">
+    <form class="contenedor-general container" method="post" action="pagoExitoso.php?horario=<?php echo $horarioElegido."&asientos=".$asientosSeleccionados."&precio=".$precioTotal;?>">
 			<div class="contenedor-pago">
 				<h1 id="titulo">Tarjeta de Debito</h1>
 
@@ -73,9 +72,9 @@
 
 
 			 <a href="#" onclick="window.history.go(-1); return false;"><button id="btn-regresar" class="btn btn-outline-danger btn-lg btn-block">Regresar</button></a>
-				<button id="btn-comprar" class="btn btn-success btn-lg btn-block">Comprar Boleto(s)</button>
+				<input type="submit" id="btn-comprar" class="btn btn-success btn-lg btn-block" value="Comprar Boleto(s)">
 			</div>
-		</div>
+		</form>
     
 
     <script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
