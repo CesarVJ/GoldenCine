@@ -65,8 +65,13 @@
 			</a>
 			<a href="ReservarAsientos.php?id=<?php echo $pelicula->getId_pelicula();?>" id="btn-reservar"><button class="btn btn-primary">Reservar
 					asiento</button></a>
-			<button class="btn btn-warning" id="btn-calificar" type="button" data-toggle="modal"
+					<?php 
+					$puedeCalificar= ejecutarConsulta("SELECT Peliculaid_pelicula FROM Reservacion inner join Horario on Horarioid_horario = id_horario where Peliculaid_pelicula = '".$pelicula->getId_pelicula()."' and Clienteid_cliente = '".$_SESSION['id']."'",$conexion);
+					if($puedeCalificar != null){ ?>
+								<button class="btn btn-warning" id="btn-calificar" type="button" data-toggle="modal"
 				data-target="#mensaje-calificar<?php echo $pelicula->getId_pelicula();?>">Calificar</button>
+				<?php }else{ ?>
+					<button class="btn btn-warning disabled" id="btn-calificar" type="button" title="Debe hacer una reservacion para calificar" >Desabilitado</button>				<?php } ?>
 		</div>
 		<div class="modal fade" id="mensaje-calificar<?php echo $pelicula->getId_pelicula();?>" tabindex="-1"
 			role="dialog" aria-labelledby="mensaje-calificar" aria-hidden="true">
