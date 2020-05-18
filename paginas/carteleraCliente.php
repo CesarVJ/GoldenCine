@@ -10,10 +10,32 @@
 	<link rel="stylesheet" type="text/css" href="../css/carteleras.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../css/fontello.css">
 	<link rel="stylesheet" type="text/css" href="../css/calificar.css?v=<?php echo time(); ?>">
+	<script src="../js/validaciones.js"></script>
 
 </head>
 <body>
 	<?php require_once("../Menu.php") ?>
+	<?php
+                if(isset($_GET['calificacion'])){
+                    if(trim($_GET['calificacion']) == 'valida'){?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Tu calificacion ah sido validada</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php }else {?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>!Algo ha salido mal!.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php
+
+        }
+        }
+?>
 	<h1 id="fecha">Cartelera Febrero 2020</h1>
 	<div class="contenedor">
 		<?php

@@ -1,4 +1,12 @@
 <?php require_once("../modelo/ConsultaPeliculasCartelera.php")?>
+<?php
+	$cali = 0;
+if($pelicula->getNum_calif() == 0){
+	$cali = 0;
+}else{
+	$cali =bcdiv($pelicula->getCalificacion() / $pelicula->getNum_calif(), '1', 1);
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +20,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/editarPelicula.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../css/calificar.css?v=<?php echo time(); ?>">
 
-	<script src="../js/validaciones.js"></script>
 </head>
 
 <body>
@@ -23,12 +30,12 @@
 	
 		<div class="margen visual">
 		<div class="estrellas-caja" style="text-align:center;">
-							Calificación: <?php echo $pelicula->getCalificacion();?> <br>
-							<a class="uno unchecked" data-value="1" title="1 estrella">&#9733;</a>
-							<a class="dos unchecked" data-value="2" title="2 estrellas">&#9733;</a>
-							<a class="tres unchecked" data-value="3" title="3 estrellas">&#9733;</a>
-							<a class="cuatro unchecked" data-value="4" title="4 estrellas">&#9733;</a>
-							<a class="cinco unchecked" data-value="5" title="5 estrellas">&#9733;</a>
+							Calificación: <?php echo $cali?> <br>
+							<a id="estrella-1" class="uno unchecked" data-value="1" title="1 estrella" <?php if(round($cali)>=1)  echo 'style="color:red;"'?>>&#9733;</a>
+							<a class="dos unchecked" data-value="2" title="2 estrellas" <?php if(round($cali)>=2)  echo 'style="color:red;"'?> >&#9733;</a>
+							<a class="tres unchecked" data-value="3" title="3 estrellas" <?php if(round($cali)>=3)  echo 'style="color:red;"'?>>&#9733;</a>
+							<a class="cuatro unchecked" data-value="4" title="4 estrellas" <?php if(round($cali)>=4)  echo 'style="color:red;"'?>>&#9733;</a>
+							<a class="cinco unchecked" data-value="5" title="5 estrellas" <?php if(round($cali)>=5)  echo 'style="color:red;"'?>>&#9733;</a>
 		</div>
 			<div id="portada-vista" class="inserta-portada portada-activa" style="background-image: url('<?php echo "../img/portadas/".$pelicula->getPortada(); ?>')">
 			</div>
@@ -65,17 +72,15 @@
 	</form>
 
 	</div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-
-
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="../js/validaciones.js?v=<?php echo time(); ?>"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
 
 </body>
 

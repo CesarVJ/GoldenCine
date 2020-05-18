@@ -25,6 +25,9 @@
 		$pelicula->setCategoria($row["categoria"]);
 		$pelicula->setDuracion($row["duracion"]);
 		$pelicula->setPrecio($row["precio"]);
+		$pelicula->setCalificacion($row["calificacion"]);
+		$pelicula->setNum_calif($row["num_calif"]);
+
 
 
 		$id_pelicula =$pelicula->getId_pelicula();
@@ -36,6 +39,9 @@
 		$portada = $pelicula->getPortada();
 		$duracion = $pelicula->getDuracion();
 		$precio = $pelicula->getPrecio();
+		$Calificacion = $pelicula->getCalificacion();
+		$num_calif = $pelicula->getNum_calif();
+
 
         
         /*

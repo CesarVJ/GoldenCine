@@ -9,6 +9,8 @@ class Pelicula{
 	private $portada = "";
 	private $duracion = 0;
 	private $precio = 0.0;
+	private $num_calif = 0;
+
 
 	
 
@@ -37,6 +39,14 @@ class Pelicula{
 
 	public function setCalificacion($calificacion){
 		$this->calificacion = $calificacion;
+	}
+
+	public function getNum_calif(){
+		return $this->num_calif;
+	}
+
+	public function setNum_calif($num_calif){
+		$this->num_calif = $num_calif;
 	}
 
 	public function getDescripcion(){
@@ -86,6 +96,8 @@ class Pelicula{
 	public function setPrecio($precio){
 		$this->precio = $precio;
 	}
+
+
 
 }
 
